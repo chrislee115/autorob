@@ -27,8 +27,21 @@ minheaper = {};
 
 // define insert function for min binary heap
 function minheap_insert(heap, new_element) {
+  heap.push(new_element)
 
-    // STENCIL: implement your min binary heap insert operation
+  let i = heap.length - 1 
+  while (i > 0) {
+    var parent = Math.floor((i + 1) / 2) - 1;
+      
+    // swap if parent is greater than child
+    if (heap[parent] > heap[i]) {
+      var tmp = heap[parent];
+      heap[parent] = heap[i];
+      heap[i] = tmp;
+    }
+      
+    i = parent;
+  }
 }
 
 // assign insert function within minheaper object
@@ -40,12 +53,42 @@ minheaper.insert = minheap_insert;
 
 // define extract function for min binary heap
 function minheap_extract(heap) {
+  var min = heap[0], i = 0;
+  //last element at top of head, then bubble down
+  heap[0] = heap.pop();
 
-    // STENCIL: implement your min binary heap extract operation
+  while (true) {
+    var rightChild = (i + 1) * 2;
+    var leftChild = rightChild - 1;
+    var minChild;
+    var toSwap = null;
+    
+    // get smallest child (right may not exist), and compare with parent
+    if (!heap[rightChild]) {
+      minChild = leftChild;
+    } else {
+      minChild = (heap[leftChild] < heap[rightChild]) ? leftChild : rightChild;
+    }
+    if (heap[i] > heap[minChild]) {
+      toSwap = minChild;
+    }
+    
+    // everything is in right place, so we done
+    if (toSwap == null) {
+      break;
+    }
+    
+    var temp = heap[toSwap];
+    heap[toSwap] = heap[i];
+    heap[i] = temp;
+    
+    i = toSwap;
+  }
+
+  return min;
 }
-
 // assign extract function within minheaper object
-
+minheaper.extract = minheap_extract;
     // STENCIL: ensure extract method is within minheaper object
 
 

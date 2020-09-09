@@ -58,7 +58,11 @@ function tutorialJSCoding() {
     myObject["department"] = "EECS"; // this variable is of type "string"
 
     myObject.course_number = 367;  // this variable is of type "number"
-
+    if (typeof myObject === "undefined") {
+        console.log("poop the scoop");
+    } else {
+        console.log("scoop the poop");
+    }
     /* JavaScript has core arithemtic operators following the order of 
          operations.  The "Math" object has additional standard operations.
          For a complete listing of the Math object, open the "browser console"
