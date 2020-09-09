@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 KinEval
 =======
@@ -86,3 +87,6 @@ The file project_pendularm/pendularm1.html is a code stencil for implementing ph
 - A/D - apply a forward/backward force
 
 
+=======
+# autorob
+>>>>>>> 0e138b27619cd6b39e28d03d919979e6fb22509f
