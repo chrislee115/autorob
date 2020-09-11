@@ -26,8 +26,7 @@
 function initSearchGraph() {
 
     // create the search queue
-    visit_queue = new PrioQ();
-
+    visit_queue = [];
     // initialize search graph as 2D array over configuration space
     //   of 2D locations with specified spatial resolution
     G = [];
@@ -50,7 +49,7 @@ function initSearchGraph() {
             //   point for the search
             if ( (Math.abs(G[iind][jind].x - q_init[0]) < eps) && 
                  (Math.abs(G[iind][jind].y - q_init[1]) < eps)) {
-                visit_queue.insert(G[iind][jind]);
+                insert(visit_queue, G[iind][jind]);
                 G[iind][jind].distance = 0;
                 G[iind][jind].visited = true;
                 G[iind][jind].queued = true;
@@ -89,12 +88,12 @@ function addNeighbors(curr, neighbors) {
     }
 }
 function iterateGraphSearch() {
-    if (visit_queue.empty()) {
-        console.log("what");
+    if (visit_queue.length == 0) {
         return "failed";
     }
-    if (getDistToGoal(visit_queue.front()) >= eps) {
-        var curr = visit_queue.pop();
+    if (getDistToGoal(visit_queue[0]) >= (eps / 10.0)) {
+        var curr = pop(visit_queue);
+        draw_2D_configuration([curr.x, curr.y], "visited");
         curr.visited = true;
         neighbors = [];
         //collision detection in addneighbors
@@ -111,18 +110,18 @@ function iterateGraphSearch() {
                 neighbors[i].priority = tempDist + getDistToGoal(neighbors[i]);
             }
             if (!neighbors[i].queued) {
-                visit_queue.insert(neighbors[i]);
+                insert(visit_queue, neighbors[i]);
                 if (changed) {
                     //this is very inefficient
                 }
                 neighbors[i].queued = true;
             }
+            draw_2D_configuration([neighbors[i].x, neighbors[i].y], "queued");
         }
-        visit_queue.fixInvariant();
-        drawHighlightedPathGraph(curr)
+        fixInvariant(visit_queue);
         return "iterating";
     } else {
-        drawHighlightedPathGraph(visit_queue.front());
+        drawHighlightedPathGraph(visit_queue[0]);
         return "succeeded";
     }
 
@@ -145,61 +144,101 @@ function iterateGraphSearch() {
 //////////////////////////////////////////////////
 /////     MIN HEAP IMPLEMENTATION FUNCTIONS
 //////////////////////////////////////////////////
-class PrioQ {
-    constructor() {
-        this.items = [];
-    }
-    insert(elem) {
-        // creating object from queue element 
-        var contain = false; 
-    
-        // iterating through the entire 
-        // item array to add element at the 
-        // correct location of the Queue 
-        for (var i = 0; i < this.items.length; i++) { 
-            if (this.items[i].priority > elem.priority) { 
-                // Once the correct location is found it is 
-                // enqueued 
-                this.items.splice(i, 0, elem); 
-                contain = true; 
-                break; 
-            } 
+function insert(heap, elem) {
+    // creating object from queue element 
+    var contain = false; 
+
+    // iterating through the entire 
+    // item array to add element at the 
+    // correct location of the Queue 
+    for (var i = 0; i < heap.length; i++) { 
+        if (heap[i].priority > elem.priority) { 
+            // Once the correct location is found it is 
+            // enqueued 
+            heap.splice(i, 0, elem); 
+            contain = true; 
+            break; 
         } 
-    
-        // if the element have the highest priority 
-        // it is added at the end of the queue 
-        if (!contain) { 
-            this.items.push(elem); 
-        } 
-    }
-    pop() {
-        if (!this.empty()) {
-            return this.items.shift();
-        }
-    }
-    front() {
-        if (!this.empty()) {
-            return this.items[0];
-        }
-    }
-    back() {
-        if (!this.empty()) {
-            return this.items[this.items.length - 1];
-        }
-    }
-    empty() {
-        return this.items.length == 0;
-    }
-    fixInvariant() {
-        var tmp = []
-        while (!this.empty()) {
-            tmp.push(this.pop());
-        }
-        for (var i = 0; i < tmp.length; ++i) {
-            this.insert(tmp[i]);
-        }
+    } 
+
+    // if the element have the highest priority 
+    // it is added at the end of the queue 
+    if (!contain) { 
+        heap.push(elem); 
+    } 
+}
+function pop(heap) {
+    if (heap.length != 0) {
+        return heap.shift();
     }
 }
+function fixInvariant(heap) {
+    var tmp = []
+    while (heap.length != 0) {
+        tmp.push(pop(heap));
+    }
+    for (var i = 0; i < tmp.length; ++i) {
+        insert(heap, tmp[i]);
+    }
+}
+// class PrioQ {
+//     constructor() {
+//         this.items = [];
+//     }
+//     insert(elem) {
+//         // creating object from queue element 
+//         var contain = false; 
+    
+//         // iterating through the entire 
+//         // item array to add element at the 
+//         // correct location of the Queue 
+//         for (var i = 0; i < this.items.length; i++) { 
+//             if (this.items[i].priority > elem.priority) { 
+//                 // Once the correct location is found it is 
+//                 // enqueued 
+//                 this.items.splice(i, 0, elem); 
+//                 contain = true; 
+//                 break; 
+//             } 
+//         } 
+    
+//         // if the element have the highest priority 
+//         // it is added at the end of the queue 
+//         if (!contain) { 
+//             this.items.push(elem); 
+//         } 
+//     }
+//     length() {
+//         return this.items.length;
+//     }
+//     pop() {
+//         if (!this.empty()) {
+//             return this.items.shift();
+//         }
+//     }
+//     front() {
+//         if (!this.empty()) {
+//             return this.items[0];
+//         }
+//     }
+//     back() {
+//         if (!this.empty()) {
+//             return this.items[this.items.length - 1];
+//         }
+//     }
+//     empty() {
+//         return this.items.length == 0;
+//     }
+//     fixInvariant() {
+//         var tmp = []
+//         while (!this.empty()) {
+//             tmp.push(this.pop());
+//         }
+//         for (var i = 0; i < tmp.length; ++i) {
+//             this.insert(tmp[i]);
+//         }
+//     }
+// }
 
     // STENCIL: implement min heap functions for graph search priority queue.
     //   These functions work use the 'priority' field for elements in graph.
