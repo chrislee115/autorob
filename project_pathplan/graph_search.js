@@ -48,8 +48,8 @@ function initSearchGraph() {
             };
             // STENCIL: determine whether this graph node should be the start
             //   point for the search
-            if ( (Math.abs(G[iind][jind].x - q_init[0]) < 0.0001) && 
-                 (Math.abs(G[iind][jind].y - q_init[1]) < 0.0001)) {
+            if ( (Math.abs(G[iind][jind].x - q_init[0]) < eps) && 
+                 (Math.abs(G[iind][jind].y - q_init[1]) < eps)) {
                 visit_queue.insert(G[iind][jind]);
                 G[iind][jind].distance = 0;
                 G[iind][jind].visited = true;
@@ -61,12 +61,12 @@ function initSearchGraph() {
     }
 }
 function getDistToPoint(elem1, elem2) {
-    return Math.sqrt(Math.pow(elem1.x - elem2.x, 2) + 
-                            Math.pow(elem1.y - elem2.y, 2));
+    return Math.pow(elem1.x - elem2.x, 2) + 
+                            Math.pow(elem1.y - elem2.y, 2);
 }
 function getDistToGoal(elem) {
-    return Math.sqrt(Math.pow(elem.x - q_goal[0], 2) + 
-                            Math.pow(elem.y - q_goal[1], 2));
+    return Math.pow(elem.x - q_goal[0], 2) + 
+                            Math.pow(elem.y - q_goal[1], 2);
 }
 function addNeighbors(curr, neighbors) {
     for (var i = 0; i < 3; ++i) {
@@ -100,19 +100,25 @@ function iterateGraphSearch() {
         //collision detection in addneighbors
         addNeighbors(curr, neighbors);
         for (var i = 0; i < neighbors.length; ++i) {
-            visit_queue.insert(neighbors[i]);
-            neighbors[i].queued = true;
             //this is g
+            var changed = false;
             var tempDist = curr.distance + getDistToPoint(curr, neighbors[i]);
             if (neighbors[i].distance > tempDist) {
-                console.log("what");
+                changed = true;
                 neighbors[i].distance = tempDist;
                 neighbors[i].parent = curr;
                 // g + h ( we dont store h )
-                neighbors[i].priority = tempDist + 
-                    getDistToGoal(neighbors[i]);
+                neighbors[i].priority = tempDist + getDistToGoal(neighbors[i]);
+            }
+            if (!neighbors[i].queued) {
+                visit_queue.insert(neighbors[i]);
+                if (changed) {
+                    //this is very inefficient
+                }
+                neighbors[i].queued = true;
             }
         }
+        visit_queue.fixInvariant();
         drawHighlightedPathGraph(curr)
         return "iterating";
     } else {
@@ -183,6 +189,15 @@ class PrioQ {
     }
     empty() {
         return this.items.length == 0;
+    }
+    fixInvariant() {
+        var tmp = []
+        while (!this.empty()) {
+            tmp.push(this.pop());
+        }
+        for (var i = 0; i < tmp.length; ++i) {
+            this.insert(tmp[i]);
+        }
     }
 }
 
