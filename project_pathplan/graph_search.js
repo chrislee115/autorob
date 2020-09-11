@@ -22,9 +22,16 @@
 ||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/
 /||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\
 \/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/*/
-
+function updateRoundFactor() {
+    tmp = eps;
+    while (tmp < 0) {
+        tmp = tmp * 10;
+        ++roundFactor;
+    }
+}
+var roundFactor = 0;
 function initSearchGraph() {
-
+    updateRoundFactor();
     // create the search queue
     visit_queue = [];
     // initialize search graph as 2D array over configuration space
