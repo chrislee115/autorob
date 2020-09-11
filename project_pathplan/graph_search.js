@@ -122,13 +122,13 @@ function iterateGraphSearch() {
             if (!neighbors[i].queued) {
                 insert(visit_queue, neighbors[i]);
                 if (changed) {
+                    // fixInvariant(visit_queue);
                     //this is very inefficient
                 }
                 neighbors[i].queued = true;
             }
             draw_2D_configuration([neighbors[i].x, neighbors[i].y], "queued");
         }
-        fixInvariant(visit_queue);
         return "iterating";
     } else {
         drawHighlightedPathGraph(visit_queue[0]);
