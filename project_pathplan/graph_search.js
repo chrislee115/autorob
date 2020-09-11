@@ -88,6 +88,8 @@ function addNeighbors(curr, neighbors) {
     }
 }
 function iterateGraphSearch() {
+    //probs not necessary
+    if (search_visited == 0) { search_visited = 1; }
     if (visit_queue.length == 0) {
         return "failed";
     }
@@ -95,6 +97,7 @@ function iterateGraphSearch() {
         var curr = pop(visit_queue);
         draw_2D_configuration([curr.x, curr.y], "visited");
         curr.visited = true;
+        search_visited = search_visited + 1;
         neighbors = [];
         //collision detection in addneighbors
         addNeighbors(curr, neighbors);
