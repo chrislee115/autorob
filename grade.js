@@ -8,7 +8,7 @@ grade =
     "repository": "git@github.com:chrislee115/autorob.git", 
     "assignments": {
       "Honor": {
-        "status": "PENDING", 
+        "status": "CHECK", 
         "comments": [
           ""
         ]
@@ -66,23 +66,23 @@ grade =
         "test results": {
           "Test 2": {
             "Status": "Failed", 
-            "Stderr": "[ERROR]: Search time out\n"
+            "Stderr": "[ERROR]: Wrong result\n"
           }, 
           "Test 3": {
             "Status": "Failed", 
-            "Stderr": "[ERROR]: Search time out\n"
+            "Stderr": "[ERROR]: Wrong result\n"
           }, 
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "[ERROR]: Search time out\n"
+            "Stderr": "[ERROR]: Wrong result\n"
           }, 
           "Test 1": {
             "Status": "Failed", 
-            "Stderr": "[ERROR]: Search time out\n"
+            "Stderr": "[ERROR]: Wrong result\n"
           }, 
           "Test 4": {
             "Status": "Failed", 
-            "Stderr": "[ERROR]: Search time out\n"
+            "Stderr": "[ERROR]: Wrong result\n"
           }
         }, 
         "comments": [
