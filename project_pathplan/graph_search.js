@@ -86,6 +86,10 @@ function addNeighbors(curr, neighbors) {
         }
     }
 }
+function isGoal(pt) {
+    return ((Math.abs(pt.x - q_goal[0]) <= eps) && 
+    (Math.abs(pt.y - q_goal[1]) <= eps))
+}
 function iterateGraphSearch() {
     //probs not necessary
     if (search_visited == 0) { search_visited = 1; }
@@ -93,7 +97,8 @@ function iterateGraphSearch() {
         search_iterate = false;
         return "failed";
     }
-    if (getDistToGoal(visit_queue[0]) >= (eps / 10.0)) {
+    if (!isGoal(visit_queue[0])) {
+    // if (getDistToGoal(visit_queue[0]) >= (eps / 10.0)) {
         var curr = pop(visit_queue);
         draw_2D_configuration([curr.x, curr.y], "visited");
         curr.visited = true;
