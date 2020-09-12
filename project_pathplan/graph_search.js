@@ -23,7 +23,18 @@
 /||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\
 \/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/*/
 var roundFactor = 0;
+var roundedGoal = [0,0];
+function updateRoundFactor() {
+    var tmp = eps;
+    while (tmp < 1) {
+        ++roundFactor;
+        tmp = tmp * 10;
+    }
+    roundedGoal[0] = Number(q_goal[0].toFixed(tmp));
+    roundedGoal[1] = Number(q_goal[1].toFixed(tmp));
+}
 function initSearchGraph() {
+    updateRoundFactor();
     // create the search queue
     visit_queue = [];
     // initialize search graph as 2D array over configuration space
@@ -34,7 +45,8 @@ function initSearchGraph() {
         for (jind=0,ypos=-2;ypos<7;jind++,ypos+=eps) {
             G[iind][jind] = {
                 i:iind,j:jind, // mapping to graph array
-                x:xpos,y:ypos, // mapping to map coordinates
+                x:Number(xpos.toFixed(roundFactor)),
+                y:Number(ypos.toFixed(roundFactor)), // mapping to map coordinates
                 parent:null, // pointer to parent in graph along motion path
                 //gonna assume distance is equal to g
                 distance:10000, // distance to start via path through parent
@@ -87,8 +99,8 @@ function addNeighbors(curr, neighbors) {
     }
 }
 function isGoal(pt) {
-    return ((Math.abs(pt.x - q_goal[0]) <= eps) && 
-    (Math.abs(pt.y - q_goal[1]) <= eps))
+    return ((pt.x == roundedGoal[0]) && 
+    (pt.y == roundedGoal[1]))
 }
 function iterateGraphSearch() {
     //probs not necessary
