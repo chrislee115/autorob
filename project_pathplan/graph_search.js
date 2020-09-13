@@ -83,8 +83,9 @@ function getDistToGoal(elem) {
 }
 function addNeighbors(curr, neighbors) {
     for (var i = 0; i < 3; ++i) {
-        for (var j = 0; j < 3; ++j) {
-            if (i == 1 && j == 1) continue;
+        var j;
+        j = (i % 2 == 0) ? 1 : 0;
+        for (; j < 3; j += 2) {
             if ( (-2 <= G[curr.i - 1 + i][curr.j - 1 + j].x && 
                 G[curr.i - 1 + i][curr.j - 1 + j].x < 7) &&
                 (-2 <= G[curr.i - 1 + i][curr.j - 1 + j].y && 
