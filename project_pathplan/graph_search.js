@@ -25,13 +25,16 @@
 var roundFactor = 0;
 var roundedGoal = [0,0];
 function updateRoundFactor() {
+    roundFactor = 0;
     var tmp = eps;
     while (tmp < 1) {
         ++roundFactor;
         tmp = tmp * 10;
     }
-    roundedGoal[0] = Number(q_goal[0].toFixed(tmp));
-    roundedGoal[1] = Number(q_goal[1].toFixed(tmp));
+    console.log(roundFactor);
+    roundedGoal[0] = Number(q_goal[0].toFixed(roundFactor));
+    roundedGoal[1] = Number(q_goal[1].toFixed(roundFactor));
+    console.log(roundedGoal);
 }
 function initSearchGraph() {
     updateRoundFactor();
@@ -138,6 +141,8 @@ function iterateGraphSearch() {
         return "iterating";
     } else {
         drawHighlightedPathGraph(visit_queue[0]);
+        console.log(visit_queue[0])
+        console.log(roundedGoal);
         search_iterate = false;
         return "succeeded";
     }

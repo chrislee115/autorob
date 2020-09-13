@@ -254,7 +254,7 @@ function initSearch() {
 
     // specify start and goal configurations
     q_start_config = [0,0];
-    q_goal_config = [4,4];
+    q_goal_config = [4.240028409957886, 0.7492045593261719];
     q_init = q_start_config;
     q_goal = q_goal_config;
 
