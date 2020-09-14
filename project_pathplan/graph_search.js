@@ -24,6 +24,7 @@
 \/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/*/
 var roundFactor = 0;
 var roundedGoal = [0,0];
+var currPath = [];
 function updateRoundFactor() {
     roundFactor = 0;
     var tmp = eps;
@@ -63,11 +64,11 @@ function initSearchGraph() {
             //   point for the search
             if ( (Math.abs(G[iind][jind].x - q_init[0]) < eps) && 
                  (Math.abs(G[iind][jind].y - q_init[1]) < eps)) {
-                insert(visit_queue, G[iind][jind]);
                 G[iind][jind].distance = 0;
                 G[iind][jind].visited = true;
                 G[iind][jind].queued = true;
                 G[iind][jind].priority = getDistToGoal(G[iind][jind]);
+                insert(visit_queue, G[iind][jind]);
             }
 
         }
@@ -78,8 +79,8 @@ function getDistToPoint(elem1, elem2) {
                             Math.pow(elem1.y - elem2.y, 2);
 }
 function getDistToGoal(elem) {
-    return Math.pow(elem.x - q_goal[0], 2) + 
-                            Math.pow(elem.y - q_goal[1], 2);
+    return Math.pow(elem.x - roundedGoal[0], 2) + 
+                            Math.pow(elem.y - roundedGoal[1], 2);
 }
 function addNeighbors(curr, neighbors) {
     for (var i = 0; i < 3; ++i) {
@@ -124,19 +125,19 @@ function iterateGraphSearch() {
         addNeighbors(curr, neighbors);
         for (var i = 0; i < neighbors.length; ++i) {
             //this is g
-            var changed = false;
-            var tempDist = curr.distance + getDistToPoint(curr, neighbors[i]);
+            var tempDist = curr.distance + eps;
             if (neighbors[i].distance > tempDist) {
-                changed = true;
+                currPath.push(neighbors[i]);
                 neighbors[i].distance = tempDist;
                 neighbors[i].parent = curr;
                 // g + h ( we dont store h )
                 neighbors[i].priority = tempDist + getDistToGoal(neighbors[i]);
             }
             if (!neighbors[i].queued) {
-                insert(visit_queue, neighbors[i]);
                 neighbors[i].queued = true;
-            }
+                neighbors[i].parent = curr;
+                insert(visit_queue, neighbors[i]);
+            } 
             draw_2D_configuration([neighbors[i].x, neighbors[i].y], "queued");
         }
         return "iterating";
