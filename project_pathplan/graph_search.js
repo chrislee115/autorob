@@ -24,7 +24,6 @@
 \/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/*/
 var roundFactor = 0;
 var roundedGoal = [0,0];
-var currPath = [];
 function updateRoundFactor() {
     roundFactor = 0;
     var tmp = eps;
@@ -126,19 +125,17 @@ function iterateGraphSearch() {
         for (var i = 0; i < neighbors.length; ++i) {
             //this is g
             var tempDist = curr.distance + eps;
-            if (neighbors[i].distance > tempDist) {
-                currPath.push(neighbors[i]);
+            if (!neighbors[i].queued && 
+                neighbors[i].distance > tempDist) {
+                neighbors[i].queued = true;
                 neighbors[i].distance = tempDist;
                 neighbors[i].parent = curr;
                 // g + h ( we dont store h )
                 neighbors[i].priority = tempDist + getDistToGoal(neighbors[i]);
-            }
-            if (!neighbors[i].queued) {
-                neighbors[i].queued = true;
-                neighbors[i].parent = curr;
                 insert(visit_queue, neighbors[i]);
-            } 
-            draw_2D_configuration([neighbors[i].x, neighbors[i].y], "queued");
+                draw_2D_configuration([neighbors[i].x, neighbors[i].y], "queued");
+            }
+            else { continue; }
         }
         return "iterating";
     } else {
