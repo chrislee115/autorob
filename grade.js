@@ -65,28 +65,28 @@ grade =
         "status": "PENDING", 
         "test results": {
           "Test 2": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Wrong result\n"
+            "Status": "Succeed", 
+            "Stderr": "N/A"
           }, 
           "Test 3": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Wrong result\n"
+            "Status": "Succeed", 
+            "Stderr": "N/A"
           }, 
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Wrong result\n"
+            "Status": "Succeed", 
+            "Stderr": "N/A"
           }, 
           "Test 1": {
             "Status": "Failed", 
-            "Stderr": "[ERROR]: Wrong result\n"
+            "Stderr": "Error message too long, print partially: 1\n[ 3.5, 4 ]\n{ i: 55,\n  j: 60,\n  x: 3.5,\n  y: 4,\n  parent: \n   { i: 54,\n     j: 60,\n     x: 3.4,\n     y: 4,\n     parent: \n      { i: 54,\n        j: 61,\n        x: 3.4,\n        y: 4.1,\n        parent: "
           }, 
           "Test 4": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Wrong result\n"
+            "Status": "Succeed", 
+            "Stderr": "N/A"
           }
         }, 
         "comments": [
-          "0 out of 5 test cases passed"
+          "4 out of 5 test cases passed"
         ]
       }, 
       "Pendularm_Euler": {
