@@ -73,13 +73,9 @@ function initSearchGraph() {
         }
     }
 }
-function getDistToPoint(elem1, elem2) {
-    return Math.pow(elem1.x - elem2.x, 2) + 
-                            Math.pow(elem1.y - elem2.y, 2);
-}
 function getDistToGoal(elem) {
-    return Math.pow(elem.x - q_goal[0], 2) + 
-                            Math.pow(elem.y - q_goal[1], 2);
+    return Math.sqrt(Math.pow(elem.x - roundedGoal[0], 2) + 
+                            Math.pow(elem.y - roundedGoal[1], 2));
 }
 function addNeighbors(curr, neighbors) {
     for (var i = 0; i < 3; ++i) {
@@ -124,20 +120,18 @@ function iterateGraphSearch() {
         addNeighbors(curr, neighbors);
         for (var i = 0; i < neighbors.length; ++i) {
             //this is g
-            var changed = false;
-            var tempDist = curr.distance + getDistToPoint(curr, neighbors[i]);
+            var tempDist = curr.distance + eps;
             if (neighbors[i].distance > tempDist) {
-                changed = true;
                 neighbors[i].distance = tempDist;
                 neighbors[i].parent = curr;
                 // g + h ( we dont store h )
                 neighbors[i].priority = tempDist + getDistToGoal(neighbors[i]);
+                if (!neighbors[i].queued) {
+                    neighbors[i].queued = true;
+                    insert(visit_queue, neighbors[i]);
+                    draw_2D_configuration([neighbors[i].x, neighbors[i].y], "queued");
+                }
             }
-            if (!neighbors[i].queued) {
-                insert(visit_queue, neighbors[i]);
-                neighbors[i].queued = true;
-            }
-            draw_2D_configuration([neighbors[i].x, neighbors[i].y], "queued");
         }
         return "iterating";
     } else {
