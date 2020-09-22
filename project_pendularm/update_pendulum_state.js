@@ -1,27 +1,38 @@
+first = true
 function update_pendulum_state(numerical_integrator, pendulum, dt, gravity) {
     // integrate pendulum state forward in time by dt
     // please use names 'pendulum.angle', 'pendulum.angle_previous', etc. in else codeblock between line 28-30
-
+    if (first) {
+        if (numerical_integrator === "verlet") {
+            init_verlet_integrator(pendulum, t, gravity)
+        }
+        first = false
+        return pendulum
+    }
     if (typeof numerical_integrator === "undefined")
         numerical_integrator = "none";
 
     if (numerical_integrator === "euler") {
         pendulum.angle_previous = pendulum.angle;
-        pendulum.angle = pendulum.angle + dt * (pendulum.angle_dot);
-        pendulum.angle_dot = pendulum.angle_dot + dt * pendulum_acceleration(pendulum, gravity);
+        prevV = pendulum.angle_dot
+        pendulum.angle_dot = pendulum.angle_dot + (dt * pendulum_acceleration(pendulum, gravity));
+        pendulum.angle = pendulum.angle + (dt * prevV);
         numerical_integrator = "euler";
-    // STENCIL: a correct Euler integrator is REQUIRED for assignment
-
     }
     else if (numerical_integrator === "verlet") {
-
-    // STENCIL: basic Verlet integration
-
+        oldPrev = pendulum.angle
+        pendulum.angle = (2 * pendulum.angle) - pendulum.angle_previous + (pendulum_acceleration(pendulum, gravity) * Math.pow(dt, 2))
+        pendulum.angle_previous = oldPrev
+        numerical_integrator = "verlet";
     }
     else if (numerical_integrator === "velocity verlet") {
-
-    // STENCIL: a correct velocity Verlet integrator is REQUIRED for assignment
-
+        pendulum.angle_previous = pendulum.angle;
+        prevV = pendulum.angle_dot
+        futurePend = pendulum
+        futurePend, _ = init_verlet_integrator(futurePend, dt, gravity)
+        pendulum.angle = pendulum.angle + pendulum.dot + ((1/2) * pendulum_acceleration(pendulum, gravity) * Math.pow(dt, 2))
+        pendulum.angle_dot = pendulum.angle_dot + (pendulum_acceleration(pendulum, gravity) + pendulum_acceleration(futurePend, gravity)) * (dt / 2)
+        numerical_integrator = "velocity verlet";
     }
     else if (numerical_integrator === "runge-kutta") {
 
@@ -39,13 +50,16 @@ function update_pendulum_state(numerical_integrator, pendulum, dt, gravity) {
 
 function pendulum_acceleration(pendulum, gravity) {
     // STENCIL: return acceleration(s) system equation(s) of motion 
-    return gravity * Math.sin(pendulum.angle)
+    return  ((-1 * gravity * Math.sin(pendulum.angle)) / pendulum.length) + ((-1 * gravity * Math.sin(pendulum.angle)) / pendulum.length)
 }
 
 function init_verlet_integrator(pendulum, t, gravity) {
     // STENCIL: for verlet integration, a first step in time is needed
     // return: updated pendulum state and time
-
+    oldPrev = pendulum.angle
+    pendulum.angle = pendulum.angle + (pendulum.angle_dot * dt) + (Math.pow(dt, 2) * (1/2) * pendulum_acceleration(pendulum, gravity))
+    pendulum.angle_previous = oldPrev
+    t = t + dt
     return [pendulum, t];
 }
 
