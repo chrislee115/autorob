@@ -6,7 +6,10 @@ function update_pendulum_state(numerical_integrator, pendulum, dt, gravity) {
         numerical_integrator = "none";
 
     if (numerical_integrator === "euler") {
-
+        pendulum.angle_previous = pendulum.angle;
+        pendulum.angle = pendulum.angle + dt * (pendulum.angle_dot);
+        pendulum.angle_dot = pendulum.angle_dot + dt * pendulum_acceleration(pendulum, gravity);
+        numerical_integrator = "euler";
     // STENCIL: a correct Euler integrator is REQUIRED for assignment
 
     }
@@ -36,7 +39,7 @@ function update_pendulum_state(numerical_integrator, pendulum, dt, gravity) {
 
 function pendulum_acceleration(pendulum, gravity) {
     // STENCIL: return acceleration(s) system equation(s) of motion 
-    
+    return gravity * Math.sin(pendulum.angle)
 }
 
 function init_verlet_integrator(pendulum, t, gravity) {
