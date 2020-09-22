@@ -1,3 +1,4 @@
+//CI grader generates report at 22-09-2020-00-24-28
 grade = 
 {
   "chrisree": {
@@ -14,7 +15,7 @@ grade =
         ]
       }, 
       "PathPlan_Heap": {
-        "status": "PASS", 
+        "status": "CHECK", 
         "test results": {
           "Test 8": {
             "Status": "Succeed", 
@@ -58,11 +59,11 @@ grade =
           }
         }, 
         "comments": [
-          "10 out of 10 test cases passed"
+          "Point: 4/4, due day check pass, good work!"
         ]
       }, 
       "PathPlan_AStar": {
-        "status": "PASS", 
+        "status": "CHECK", 
         "test results": {
           "Test 2": {
             "Status": "Succeed", 
@@ -86,25 +87,51 @@ grade =
           }
         }, 
         "comments": [
-          "5 out of 5 test cases passed"
+          "Point: 8/8, due day check pass, good work!"
         ]
       }, 
       "Pendularm_Euler": {
         "status": "PENDING", 
+        "test results": {
+          "Test 0": {
+            "Status": "Failed", 
+            "Stderr": "[ERROR]: Test failed\n"
+          }, 
+          "Test 1": {
+            "Status": "Failed", 
+            "Stderr": "[ERROR]: Test failed\n"
+          }
+        }, 
         "comments": [
-          ""
+          "0 out of 2 test cases passed"
         ]
       }, 
       "Pendularm_VelocityVerlet": {
         "status": "PENDING", 
+        "test results": {
+          "Test 0": {
+            "Status": "Failed", 
+            "Stderr": "[ERROR]: Test failed\n"
+          }, 
+          "Test 1": {
+            "Status": "Failed", 
+            "Stderr": "[ERROR]: Test failed\n"
+          }
+        }, 
         "comments": [
-          ""
+          "0 out of 2 test cases passed"
         ]
       }, 
       "Pendularm_PID": {
         "status": "PENDING", 
+        "test results": {
+          "Test 0": {
+            "Status": "Failed", 
+            "Stderr": "[ERROR]: PID test with velocity verlet failed\n"
+          }
+        }, 
         "comments": [
-          ""
+          "0 out of 1 test cases passed"
         ]
       }, 
       "FK_MatrixRoutines": {
@@ -200,7 +227,7 @@ grade =
     }, 
     "quizzes": [
       {
-        "status": "PENDING"
+        "status": 2.17
       }, 
       {
         "status": "PENDING"
