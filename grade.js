@@ -1,4 +1,4 @@
-//CI grader generates report at 23-09-2020-00-24-10
+//CI grader generates report at 23-09-2020-15-50-05
 grade = 
 {
   "chrisree": {
@@ -91,19 +91,19 @@ grade =
         ]
       }, 
       "Pendularm_Euler": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 0": {
             "Status": "Succeed", 
             "Stderr": "N/A"
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Test failed\n"
+            "Status": "Succeed", 
+            "Stderr": "N/A"
           }
         }, 
         "comments": [
-          "1 out of 2 test cases passed"
+          "2 out of 2 test cases passed"
         ]
       }, 
       "Pendularm_VelocityVerlet": {
