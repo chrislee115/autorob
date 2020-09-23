@@ -26,12 +26,11 @@ function update_pendulum_state(numerical_integrator, pendulum, dt, gravity) {
         numerical_integrator = "verlet";
     }
     else if (numerical_integrator === "velocity verlet") {
-        pendulum.angle_previous = pendulum.angle;
-        prevV = pendulum.angle_dot
-        futurePend = pendulum
-        futurePend, _ = init_verlet_integrator(futurePend, dt, gravity)
-        pendulum.angle = pendulum.angle + pendulum.dot + ((1/2) * pendulum_acceleration(pendulum, gravity) * Math.pow(dt, 2))
-        pendulum.angle_dot = pendulum.angle_dot + (pendulum_acceleration(pendulum, gravity) + pendulum_acceleration(futurePend, gravity)) * (dt / 2)
+        prevAccel = pendulum_acceleration(pendulum, gravity)
+        
+        pendulum.angle_previous = pendulum.angle
+        pendulum.angle = pendulum.angle + (pendulum.angle_dot * dt) + ((1/2) * prevAccel * Math.pow(dt, 2))
+        pendulum.angle_dot = pendulum.angle_dot + ((prevAccel + pendulum_acceleration(pendulum, gravity)) / 2) * dt
         numerical_integrator = "velocity verlet";
     }
     else if (numerical_integrator === "runge-kutta") {
@@ -50,7 +49,7 @@ function update_pendulum_state(numerical_integrator, pendulum, dt, gravity) {
 
 function pendulum_acceleration(pendulum, gravity) {
     // STENCIL: return acceleration(s) system equation(s) of motion 
-    return  ((-1 * gravity * Math.sin(pendulum.angle)) / pendulum.length) + ((-1 * gravity * Math.sin(pendulum.angle)) / pendulum.length)
+    return  ((-1 * gravity * Math.sin(pendulum.angle)) / pendulum.length)
 }
 
 function init_verlet_integrator(pendulum, t, gravity) {
