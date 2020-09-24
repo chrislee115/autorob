@@ -2,13 +2,6 @@ first = true
 function update_pendulum_state(numerical_integrator, pendulum, dt, gravity) {
     // integrate pendulum state forward in time by dt
     // please use names 'pendulum.angle', 'pendulum.angle_previous', etc. in else codeblock between line 28-30
-    if (first) {
-        if (numerical_integrator === "verlet") {
-            init_verlet_integrator(pendulum, t, gravity)
-        }
-        first = false
-        return pendulum
-    }
     if (typeof numerical_integrator === "undefined")
         numerical_integrator = "none";
 
@@ -28,8 +21,9 @@ function update_pendulum_state(numerical_integrator, pendulum, dt, gravity) {
     else if (numerical_integrator === "velocity verlet") {
         prevAccel = pendulum_acceleration(pendulum, gravity)
         
-        pendulum.angle_previous = pendulum.angle
+        oldPrev = pendulum.angle
         pendulum.angle = pendulum.angle + (pendulum.angle_dot * dt) + ((1/2) * prevAccel * Math.pow(dt, 2))
+        pendulum.angle_previous = oldPrev
         pendulum.angle_dot = pendulum.angle_dot + ((prevAccel + pendulum_acceleration(pendulum, gravity)) / 2) * dt
         numerical_integrator = "velocity verlet";
     }
@@ -64,13 +58,16 @@ function init_verlet_integrator(pendulum, t, gravity) {
 
 function set_PID_parameters(pendulum) {
     // STENCIL: change pid parameters
-    pendulum.servo = {kp:0, kd:0, ki:0};  // no control
+    pendulum.servo = {kp:1.3, kd:0, ki:0};  // no control
     return pendulum;
 }
 
 function PID(pendulum, accumulated_error, dt) {
     // STENCIL: implement PID controller
     // return: updated output in pendulum.control and accumulated_error
-
+    et = pendulum.desired - pendulum.angle
+    accumulated_error = accumulated_error + et
+    pendulum.control = (pendulum.servo.kp * et) + (pendulum.servo.ki * accumulated_error) + (pendulum.servo.kd * -1 * pendulum.angle_dot)
+    pendulum.angle = pendulum.angle + pendulum.control
     return [pendulum, accumulated_error];
 }
