@@ -1,4 +1,4 @@
-//CI grader generates report at 24-09-2020-12-07-13
+//CI grader generates report at 25-09-2020-00-08-33
 grade = 
 {
   "chrisree": {
@@ -107,19 +107,19 @@ grade =
         ]
       }, 
       "Pendularm_VelocityVerlet": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 0": {
             "Status": "Succeed", 
             "Stderr": "N/A"
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Test failed\n"
+            "Status": "Succeed", 
+            "Stderr": "N/A"
           }
         }, 
         "comments": [
-          "1 out of 2 test cases passed"
+          "2 out of 2 test cases passed"
         ]
       }, 
       "Pendularm_PID": {
