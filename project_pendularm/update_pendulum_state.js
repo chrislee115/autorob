@@ -43,7 +43,7 @@ function update_pendulum_state(numerical_integrator, pendulum, dt, gravity) {
 
 function pendulum_acceleration(pendulum, gravity) {
     // STENCIL: return acceleration(s) system equation(s) of motion 
-    return  ((-1 * gravity * Math.sin(pendulum.angle)) / pendulum.length)
+    return  ((-1 * gravity * Math.sin(pendulum.angle)) / pendulum.length) + (pendulum.control / (pendulum.mass * Math.pow(pendulum.length,2)))
 }
 
 function init_verlet_integrator(pendulum, t, gravity) {
@@ -58,7 +58,7 @@ function init_verlet_integrator(pendulum, t, gravity) {
 
 function set_PID_parameters(pendulum) {
     // STENCIL: change pid parameters
-    pendulum.servo = {kp:1.3, kd:0, ki:0};  // no control
+    pendulum.servo = {kp:1000, kd:1000, ki:100};  // no control
     return pendulum;
 }
 
@@ -66,8 +66,9 @@ function PID(pendulum, accumulated_error, dt) {
     // STENCIL: implement PID controller
     // return: updated output in pendulum.control and accumulated_error
     et = pendulum.desired - pendulum.angle
+    etdt = pendulum.desired - pendulum.angle_previous
+    // pendulum.angle_previous = pendulum.angle
     accumulated_error = accumulated_error + et
-    pendulum.control = (pendulum.servo.kp * et) + (pendulum.servo.ki * accumulated_error) + (pendulum.servo.kd * -1 * pendulum.angle_dot)
-    pendulum.angle = pendulum.angle + pendulum.control
+    pendulum.control = (pendulum.servo.kp * et) + (pendulum.servo.ki * accumulated_error) + (pendulum.servo.kd * (et - etdt))
     return [pendulum, accumulated_error];
 }
