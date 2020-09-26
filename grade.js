@@ -1,4 +1,4 @@
-//CI grader generates report at 25-09-2020-12-07-14
+//CI grader generates report at 26-09-2020-11-04-02
 grade = 
 {
   "chrisree": {
@@ -95,11 +95,11 @@ grade =
         "test results": {
           "Test 0": {
             "Status": "Succeed", 
-            "Stderr": "N/A"
+            "Stderr": ""
           }, 
           "Test 1": {
             "Status": "Succeed", 
-            "Stderr": "N/A"
+            "Stderr": ""
           }
         }, 
         "comments": [
@@ -111,11 +111,11 @@ grade =
         "test results": {
           "Test 0": {
             "Status": "Succeed", 
-            "Stderr": "N/A"
+            "Stderr": ""
           }, 
           "Test 1": {
             "Status": "Succeed", 
-            "Stderr": "N/A"
+            "Stderr": ""
           }
         }, 
         "comments": [
@@ -123,15 +123,15 @@ grade =
         ]
       }, 
       "Pendularm_PID": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: PID test with velocity verlet failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 1 test cases passed"
+          "1 out of 1 test cases passed"
         ]
       }, 
       "FK_MatrixRoutines": {
