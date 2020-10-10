@@ -1,4 +1,4 @@
-//CI grader generates report at 09-10-2020-12-07-43
+//CI grader generates report at 10-10-2020-02-55-40
 grade = 
 {
   "chrisree": {
@@ -139,7 +139,7 @@ grade =
         "test results": {
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "matrix_multiply undefined\nmatrix_transpose undefined\nvector_normalize undefined\nvector_cross undefined\ngenerate_identity undefined\ngenerate_translation_matrix undefined\ngenerate_rotation_matrix_X undefined\ngenerate_rotation_matrix_Y undefined\ngenerate_rotation_matrix_Z undefined\nAt least one function undefined\n"
+            "Stderr": "generate_rotation_matrix_X undefined\ngenerate_rotation_matrix_Y undefined\ngenerate_rotation_matrix_Z undefined\nAt least one function undefined\n"
           }
         }, 
         "comments": [
@@ -151,19 +151,19 @@ grade =
         "test results": {
           "Test 2": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /chrisree/FK_Transforms/test_2.js:753\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/chrisree/FK_Transforms/test_2.js:753:13)\n    at Object.<anonymous> (/chrisree/FK_Transforms/test_2.js:1073:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js "
+            "Stderr": "Robot crawler joints transformation undefined\n"
           }, 
           "Test 3": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /chrisree/FK_Transforms/test_3.js:532\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/chrisree/FK_Transforms/test_3.js:532:13)\n    at Object.<anonymous> (/chrisree/FK_Transforms/test_3.js:852:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js ("
+            "Stderr": "Robot br2 joints transformation undefined\n"
           }, 
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /chrisree/FK_Transforms/test_0.js:618\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/chrisree/FK_Transforms/test_0.js:618:13)\n    at Object.<anonymous> (/chrisree/FK_Transforms/test_0.js:938:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js ("
+            "Stderr": "Robot mr2 joints transformation undefined\n"
           }, 
           "Test 1": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /chrisree/FK_Transforms/test_1.js:501\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/chrisree/FK_Transforms/test_1.js:501:13)\n    at Object.<anonymous> (/chrisree/FK_Transforms/test_1.js:821:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js ("
+            "Stderr": "Robot urdf_example joints transformation undefined\n"
           }, 
           "Test 6": {
             "Status": "Succeed", 
@@ -175,7 +175,7 @@ grade =
           }, 
           "Test 4": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /chrisree/FK_Transforms/test_4.js:526\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/chrisree/FK_Transforms/test_4.js:526:13)\n    at Object.<anonymous> (/chrisree/FK_Transforms/test_4.js:846:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js ("
+            "Stderr": "Robot y joints transformation undefined\n"
           }, 
           "Test 5": {
             "Status": "Succeed", 
