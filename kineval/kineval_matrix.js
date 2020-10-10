@@ -136,10 +136,14 @@ function generate_identity() {
     return ans;
 }
 
-// function generate_translation_matrix(tx, ty, tz) {
-//     // returns 4-by-4 matrix as a 2D array
-    
-// }
+function generate_translation_matrix(tx, ty, tz) {
+    // returns 4-by-4 matrix as a 2D array
+    ans = generate_identity();
+    ans[0][3] = tx;
+    ans[1][3] = ty;
+    ans[2][3] = tz;
+    return ans;
+}
 
 // function generate_rotation_matrix_X(angle) {
 //     // returns 4-by-4 matrix as a 2D array, angle is in radians
