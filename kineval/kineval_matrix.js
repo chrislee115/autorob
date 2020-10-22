@@ -145,17 +145,29 @@ function generate_translation_matrix(tx, ty, tz) {
     return ans;
 }
 
-// function generate_rotation_matrix_X(angle) {
-//     // returns 4-by-4 matrix as a 2D array, angle is in radians
-    
-// }
+function generate_rotation_matrix_X(angle) {
+    // returns 4-by-4 matrix as a 2D array, angle is in radians
+    ans = generate_identity();
+    ans[1][1] = Math.cos(angle);
+    ans[1][2] = -1 * Math.sin(angle);
+    ans[2][1] = Math.sin(angle);
+    ans[2][2] = Math.cos(angle);
+}
 
-// function generate_rotation_matrix_Y(angle) {
-//     // returns 4-by-4 matrix as a 2D array, angle is in radians
-    
-// }
+function generate_rotation_matrix_Y(angle) {
+    // returns 4-by-4 matrix as a 2D array, angle is in radians
+    ans = generate_identity();
+    ans[0][0] = Math.cos(angle);
+    ans[0][1] = Math.sin(angle);
+    ans[2][0] = -1 * Math.sin(angle);
+    ans[2][1] = Math.cos(angle);
+}
 
-// function generate_rotation_matrix_Z(angle) {
-//     // returns 4-by-4 matrix as a 2D array, angle is in radians
-    
-// }
+function generate_rotation_matrix_Z(angle) {
+    // returns 4-by-4 matrix as a 2D array, angle is in radians
+    ans = generate_identity();
+    ans[0][0] = Math.cos(angle);
+    ans[0][1] = -1 * Math.sin(angle);
+    ans[1][0] = Math.sin(angle);
+    ans[1][1] = Math.cos(angle);
+}
