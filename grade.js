@@ -1,4 +1,4 @@
-//CI grader generates report at 22-10-2020-12-07-55
+//CI grader generates report at 22-10-2020-18-07-38
 grade = 
 {
   "chrisree": {
@@ -139,7 +139,7 @@ grade =
         "test results": {
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "matrix_multiply test pass\nmatrix_transpose undefined return\nvector_normalize test pass\nvector_cross test pass\ngenerate_identity test pass\ngenerate_translation_matrix test pass\ngenerate_rotation_matrix_X undefined return\ngenerate_rotation_matrix_Y undefined return\ngenerate_rotation_matrix_Z undefined return\n[ERROR]: Test fail\n"
+            "Stderr": "matrix_multiply test pass\nmatrix_transpose test fail\nvector_normalize test pass\nvector_cross test pass\ngenerate_identity test pass\ngenerate_translation_matrix test pass\ngenerate_rotation_matrix_X test pass\ngenerate_rotation_matrix_Y test fail\ngenerate_rotation_matrix_Z test pass\n[ERROR]: Test fail\n"
           }
         }, 
         "comments": [
