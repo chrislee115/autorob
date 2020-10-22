@@ -1,4 +1,4 @@
-//CI grader generates report at 22-10-2020-00-26-16
+//CI grader generates report at 22-10-2020-06-07-18
 grade = 
 {
   "chrisree": {
@@ -139,7 +139,7 @@ grade =
         "test results": {
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /chrisree/FK_MatrixRoutines/test_0.js:249\n                ans[r][mid] += (m1[r][i] * m2[i][c])\n                                      ^\n\nReferenceError: i is not defined\n    at matrix_multiply (/chrisree/FK_MatrixRoutines/test_0.js:249:39)\n    at test_main (/chrisree/FK_MatrixRoutines/test_0.js:458:14)\n    at Object.<anonymous> (/c"
+            "Stderr": "matrix_multiply test pass\nmatrix_transpose undefined return\nvector_normalize test pass\nvector_cross test pass\ngenerate_identity test pass\ngenerate_translation_matrix test pass\ngenerate_rotation_matrix_X undefined return\ngenerate_rotation_matrix_Y undefined return\ngenerate_rotation_matrix_Z undefined return\n[ERROR]: Test fail\n"
           }
         }, 
         "comments": [
