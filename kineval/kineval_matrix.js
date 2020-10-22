@@ -80,7 +80,7 @@ function matrix_multiply(m1, m2) {
             ans[r][c] = 0;
             // get dot product
             for (var mid = 0; mid < m1c; ++mid) {
-                ans[r][c] += (m1[r][i] * m2[i][c])
+                ans[r][c] += (m1[r][mid] * m2[mid][c])
             }
         }
     }
