@@ -90,6 +90,7 @@ function matrix_multiply(m1, m2) {
 // this might be wrong lol
 function matrix_transpose(m) {
     m[0].map((_, col) => m.map(row => row[col]));
+    return m;
 }
 
 // function matrix_pseudoinverse(m) {
@@ -152,6 +153,7 @@ function generate_rotation_matrix_X(angle) {
     ans[1][2] = -1 * Math.sin(angle);
     ans[2][1] = Math.sin(angle);
     ans[2][2] = Math.cos(angle);
+    return ans;
 }
 
 function generate_rotation_matrix_Y(angle) {
@@ -161,6 +163,7 @@ function generate_rotation_matrix_Y(angle) {
     ans[0][1] = Math.sin(angle);
     ans[2][0] = -1 * Math.sin(angle);
     ans[2][1] = Math.cos(angle);
+    return ans;
 }
 
 function generate_rotation_matrix_Z(angle) {
@@ -170,4 +173,5 @@ function generate_rotation_matrix_Z(angle) {
     ans[0][1] = -1 * Math.sin(angle);
     ans[1][0] = Math.sin(angle);
     ans[1][1] = Math.cos(angle);
+    return ans;
 }
