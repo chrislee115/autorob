@@ -17,19 +17,23 @@
 |\/| |\/| |\/| |\/| |\/| |\/| |\/| |\/| |\/| |\/| |\/| |\/| |\/| |\/| |\/| --*/
 
 kineval.robotForwardKinematics = function robotForwardKinematics () { 
-
     if (typeof kineval.buildFKTransforms === 'undefined') {
         textbar.innerHTML = "forward kinematics not implemented";
         return;
     }
-
+    kineval.buildFKTransforms();
     // STENCIL: implement kineval.buildFKTransforms();
 
 }
 
-// kineval.buildFKTransforms = function buildFKTransforms() {
-    
-// }
+kineval.buildFKTransforms = function buildFKTransforms() {
+    console.log("we out here boiiiii\n");
+    stack = generate_identity();
+    while (true) {
+        //push a copy of top of stack when traversing to child
+        stack.push(stack[stack.length-1]);
+    }
+}
 
     // STENCIL: reference code alternates recursive traversal over 
     //   links and joints starting from base, using following functions: 

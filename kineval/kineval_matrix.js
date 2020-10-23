@@ -160,9 +160,9 @@ function generate_rotation_matrix_Y(angle) {
     // returns 4-by-4 matrix as a 2D array, angle is in radians
     ans = generate_identity();
     ans[0][0] = Math.cos(angle);
-    ans[0][1] = Math.sin(angle);
+    ans[0][2] = Math.sin(angle);
     ans[2][0] = -1 * Math.sin(angle);
-    ans[2][1] = Math.cos(angle);
+    ans[2][2] = Math.cos(angle);
     return ans;
 }
 
