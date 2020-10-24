@@ -27,9 +27,7 @@ kineval.robotForwardKinematics = function robotForwardKinematics () {
 }
 
 kineval.buildFKTransforms = function buildFKTransforms() {
-    // robot.origin.xform = generate_identity();
-    // initialize base?
-    // temp = matrix_copy(robot.origin.xform);  
+    // initialize base
     temp = matrix_copy(generate_identity());  
     temp = matrix_multiply(temp, generate_translation_matrix(robot.origin.xyz[0], robot.origin.xyz[1], robot.origin.xyz[2]));
     temp = matrix_multiply(temp, generate_rotation_matrix_X(robot.origin.rpy[0]));
@@ -42,16 +40,14 @@ kineval.buildFKTransforms = function buildFKTransforms() {
 
 function traverseFKBase() {
     baseName = robot.base;
-    tempMstack = matrix_copy(robot.origin.xform);
-    robot.links[baseName].xform = matrix_copy(tempMstack);
+    robot.links[baseName].xform = matrix_copy(robot.origin.xform);
     children = robot.links[baseName].children;
     children.forEach(function(child_joint) {
         traverseFKJoint(child_joint);
     });
 }
 function traverseFKLink(link_in) {
-    tempMstack = matrix_copy(robot.joints[robot.links[link_in].parent].xform);
-    robot.links[link_in].xform = matrix_copy(tempMstack);
+    robot.links[link_in].xform = matrix_copy(robot.joints[robot.links[link_in].parent].xform);
 
     // end traversal if no children, 
     // otherwise recurse to joint
