@@ -141,7 +141,11 @@ function generate_identity() {
     for (var i = 0; i < 4; ++i) {
         ans[i] = new Array(4);
         for (var j = 0; j < 4; ++j) {
-            ans[i][i] = 1;
+            if (i == j) {
+                ans[i][j] = 1;
+            } else {
+                ans[i][j] = 0;
+            }
         }
     }
     return ans;
