@@ -27,13 +27,14 @@ kineval.robotForwardKinematics = function robotForwardKinematics () {
 }
 
 kineval.buildFKTransforms = function buildFKTransforms() {
-    robot.origin.xform = generate_identity();
+    // robot.origin.xform = generate_identity();
     // initialize base?
-    temp = matrix_copy(robot.origin.xform);    
+    // temp = matrix_copy(robot.origin.xform);  
+    temp = matrix_copy(generate_identity());  
+    temp = matrix_multiply(temp, generate_translation_matrix(robot.origin.xyz[0], robot.origin.xyz[1], robot.origin.xyz[2]));
     temp = matrix_multiply(temp, generate_rotation_matrix_X(robot.origin.rpy[0]));
     temp = matrix_multiply(temp,  generate_rotation_matrix_Y(robot.origin.rpy[1]));
     temp = matrix_multiply(temp,  generate_rotation_matrix_Z(robot.origin.rpy[2]));
-    temp = matrix_multiply(temp, generate_translation_matrix(robot.origin.xyz[0], robot.origin.xyz[1], robot.origin.xyz[2]));
     robot.origin.xform = matrix_copy(temp);
     
     traverseFKBase();
@@ -42,7 +43,6 @@ kineval.buildFKTransforms = function buildFKTransforms() {
 function traverseFKBase() {
     baseName = robot.base;
     tempMstack = matrix_copy(robot.origin.xform);
-    tempMstack = matrix_multiply(tempMstack, robot.links[baseName].xform);
     robot.links[baseName].xform = matrix_copy(tempMstack);
     children = robot.links[baseName].children;
     children.forEach(function(child_joint) {
