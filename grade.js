@@ -1,4 +1,4 @@
-//CI grader generates report at 23-10-2020-18-08-15
+//CI grader generates report at 24-10-2020-00-10-31
 grade = 
 {
   "chrisree": {
@@ -135,15 +135,15 @@ grade =
         ]
       }, 
       "FK_MatrixRoutines": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "matrix_multiply test pass\nmatrix_transpose test fail\nvector_normalize test pass\nvector_cross test pass\ngenerate_identity test pass\ngenerate_translation_matrix test pass\ngenerate_rotation_matrix_X test pass\ngenerate_rotation_matrix_Y test pass\ngenerate_rotation_matrix_Z test pass\n[ERROR]: Test fail\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 1 test cases passed"
+          "1 out of 1 test cases passed"
         ]
       }, 
       "FK_Transforms": {
@@ -151,19 +151,19 @@ grade =
         "test results": {
           "Test 2": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: we out here boiiiii\n\n\n<--- Last few GCs --->\n\n[20423:0x461b410]     1399 ms: Scavenge 1281.2 (1314.6) -> 1281.2 (1314.6) MB, 45.8 / 0.0 ms  (average mu = 1.000, current mu = 1.000) allocation failure \n[20423:0x461b410]     2382 ms: Mark-sweep 1921.1 (1954.5) -> 1911.9 (1945.4) MB, 396.2 / 0.0 ms  (+ 40.0 ms in 12 steps since start of marking, biggest step 5.0 ms, walltime since start of marking 2340 ms) (average mu = 1.000, current mu = 1.000) allocati\n\n<--- JS stacktrace --->\n\n==== JS stack tra"
+            "Stderr": "we out here boiiiii\n\nRobot crawler joints transformation undefined\n"
           }, 
           "Test 3": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: we out here boiiiii\n\n\n<--- Last few GCs --->\n\n[20435:0x3334410]     1369 ms: Scavenge 1281.4 (1314.9) -> 1281.4 (1314.9) MB, 45.8 / 0.0 ms  (average mu = 1.000, current mu = 1.000) allocation failure \n[20435:0x3334410]     2359 ms: Mark-sweep 1921.3 (1954.8) -> 1906.9 (1940.5) MB, 403.7 / 0.0 ms  (+ 39.1 ms in 11 steps since start of marking, biggest step 4.8 ms, walltime since start of marking 2318 ms) (average mu = 1.000, current mu = 1.000) allocati\n\n<--- JS stacktrace --->\n\n==== JS stack tra"
+            "Stderr": "we out here boiiiii\n\nRobot br2 joints transformation undefined\n"
           }, 
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: we out here boiiiii\n\n\n<--- Last few GCs --->\n\n[20391:0x3b12410]     1385 ms: Scavenge 1281.4 (1314.9) -> 1281.4 (1314.9) MB, 45.8 / 0.0 ms  (average mu = 1.000, current mu = 1.000) allocation failure \n[20391:0x3b12410]     2357 ms: Mark-sweep 1921.3 (1954.8) -> 1906.9 (1940.5) MB, 388.6 / 0.0 ms  (+ 38.6 ms in 11 steps since start of marking, biggest step 4.9 ms, walltime since start of marking 2316 ms) (average mu = 1.000, current mu = 1.000) allocati\n\n<--- JS stacktrace --->\n\n==== JS stack tra"
+            "Stderr": "we out here boiiiii\n\nRobot mr2 joints transformation undefined\n"
           }, 
           "Test 1": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: we out here boiiiii\n\n\n<--- Last few GCs --->\n\n[20411:0x41ad410]     1384 ms: Scavenge 1281.3 (1314.9) -> 1281.3 (1314.9) MB, 46.0 / 0.0 ms  (average mu = 1.000, current mu = 1.000) allocation failure \n[20411:0x41ad410]     2373 ms: Mark-sweep 1921.3 (1954.8) -> 1906.9 (1940.5) MB, 395.3 / 0.0 ms  (+ 38.1 ms in 11 steps since start of marking, biggest step 4.7 ms, walltime since start of marking 2332 ms) (average mu = 1.000, current mu = 1.000) allocati\n\n<--- JS stacktrace --->\n\n==== JS stack tra"
+            "Stderr": "we out here boiiiii\n\nRobot urdf_example joints transformation undefined\n"
           }, 
           "Test 6": {
             "Status": "Succeed", 
@@ -175,7 +175,7 @@ grade =
           }, 
           "Test 4": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: we out here boiiiii\n\n\n<--- Last few GCs --->\n\n[20447:0x45e5410]     1378 ms: Scavenge 1281.3 (1314.9) -> 1281.3 (1314.9) MB, 46.2 / 0.0 ms  (average mu = 1.000, current mu = 1.000) allocation failure \n[20447:0x45e5410]     2375 ms: Mark-sweep 1921.3 (1954.8) -> 1906.9 (1940.5) MB, 391.5 / 0.0 ms  (+ 39.2 ms in 11 steps since start of marking, biggest step 5.2 ms, walltime since start of marking 2334 ms) (average mu = 1.000, current mu = 1.000) allocati\n\n<--- JS stacktrace --->\n\n==== JS stack tra"
+            "Stderr": "we out here boiiiii\n\nRobot y joints transformation undefined\n"
           }, 
           "Test 5": {
             "Status": "Succeed", 
