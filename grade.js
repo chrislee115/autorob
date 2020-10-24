@@ -1,4 +1,4 @@
-//CI grader generates report at 24-10-2020-00-10-31
+//CI grader generates report at 24-10-2020-06-07-08
 grade = 
 {
   "chrisree": {
@@ -151,19 +151,19 @@ grade =
         "test results": {
           "Test 2": {
             "Status": "Failed", 
-            "Stderr": "we out here boiiiii\n\nRobot crawler joints transformation undefined\n"
+            "Stderr": "Error message too long, print partially: /chrisree/FK_Transforms/test_2.js:629\n    var m1r = m1.length, m1c = m1[0].length, m2r = m2.length, m2c = m2[0].length;\n                                                      ^\n\nTypeError: Cannot read property 'length' of undefined\n    at matrix_multiply (/chrisree/FK_Transforms/test_2.js:629:55)\n    at traverseFKBase (/chrisree/FK_Transforms/test_2.js:1302:18)\n    at Obje"
           }, 
           "Test 3": {
             "Status": "Failed", 
-            "Stderr": "we out here boiiiii\n\nRobot br2 joints transformation undefined\n"
+            "Stderr": "Error message too long, print partially: /chrisree/FK_Transforms/test_3.js:408\n    var m1r = m1.length, m1c = m1[0].length, m2r = m2.length, m2c = m2[0].length;\n                                                      ^\n\nTypeError: Cannot read property 'length' of undefined\n    at matrix_multiply (/chrisree/FK_Transforms/test_3.js:408:55)\n    at traverseFKBase (/chrisree/FK_Transforms/test_3.js:1081:18)\n    at Obje"
           }, 
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "we out here boiiiii\n\nRobot mr2 joints transformation undefined\n"
+            "Stderr": "Error message too long, print partially: /chrisree/FK_Transforms/test_0.js:494\n    var m1r = m1.length, m1c = m1[0].length, m2r = m2.length, m2c = m2[0].length;\n                                                      ^\n\nTypeError: Cannot read property 'length' of undefined\n    at matrix_multiply (/chrisree/FK_Transforms/test_0.js:494:55)\n    at traverseFKBase (/chrisree/FK_Transforms/test_0.js:1167:18)\n    at Obje"
           }, 
           "Test 1": {
             "Status": "Failed", 
-            "Stderr": "we out here boiiiii\n\nRobot urdf_example joints transformation undefined\n"
+            "Stderr": "Error message too long, print partially: /chrisree/FK_Transforms/test_1.js:377\n    var m1r = m1.length, m1c = m1[0].length, m2r = m2.length, m2c = m2[0].length;\n                                                      ^\n\nTypeError: Cannot read property 'length' of undefined\n    at matrix_multiply (/chrisree/FK_Transforms/test_1.js:377:55)\n    at traverseFKBase (/chrisree/FK_Transforms/test_1.js:1050:18)\n    at Obje"
           }, 
           "Test 6": {
             "Status": "Succeed", 
@@ -175,7 +175,7 @@ grade =
           }, 
           "Test 4": {
             "Status": "Failed", 
-            "Stderr": "we out here boiiiii\n\nRobot y joints transformation undefined\n"
+            "Stderr": "Error message too long, print partially: /chrisree/FK_Transforms/test_4.js:402\n    var m1r = m1.length, m1c = m1[0].length, m2r = m2.length, m2c = m2[0].length;\n                                                      ^\n\nTypeError: Cannot read property 'length' of undefined\n    at matrix_multiply (/chrisree/FK_Transforms/test_4.js:402:55)\n    at traverseFKBase (/chrisree/FK_Transforms/test_4.js:1075:18)\n    at Obje"
           }, 
           "Test 5": {
             "Status": "Succeed", 
