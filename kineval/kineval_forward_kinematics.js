@@ -28,13 +28,27 @@ kineval.robotForwardKinematics = function robotForwardKinematics () {
 
 kineval.buildFKTransforms = function buildFKTransforms() {
     console.log("we out here boiiiii\n");
-    stack = generate_identity();
-    while (true) {
-        //push a copy of top of stack when traversing to child
-        stack.push(stack[stack.length-1]);
+    //push a copy of top of stack when traversing to child
+    if (robot.origin.xform == undefined) {
+        robot.origin.xform = generate_identity();
     }
+    tempmat = matrix_copy(robot.origin.xform);
+    tempmat  = matrix_multiply(tempmat, generate_translation_matrix(robot.origin.xyz[0], robot.origin.xyz[1], robot.origin.xyz[2]));
+    tempmat  = matrix_multiply(tempmat, generate_rotation_matrix_X(robot.origin.rpy[0]));
+    tempmat = matrix_multiply(tempmat,  generate_rotation_matrix_Y(robot.origin.rpy[1]));
+    tempmat = matrix_multiply(tempmat,  generate_rotation_matrix_Z(robot.origin.rpy[2]));
+    robot.origin.xform = tempmat;
 }
 
+function traverseFKBase() {
+    console.log("hoya\n");
+}
+function traverseFKLink() {
+    console.log("hoya\n");
+}
+function traverseFKJoint() {
+    console.log("hoya\n");
+}
     // STENCIL: reference code alternates recursive traversal over 
     //   links and joints starting from base, using following functions: 
     //     traverseFKBase

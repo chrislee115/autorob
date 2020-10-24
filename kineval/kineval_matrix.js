@@ -89,8 +89,18 @@ function matrix_multiply(m1, m2) {
 
 // this might be wrong lol
 function matrix_transpose(m) {
-    m[0].map((_, col) => m.map(row => row[col]));
-    return m;
+    var ans = [];
+    for(var i = 0; i < m.length; i++){
+        ans.push([]);
+    };
+
+    for(var i = 0; i < m.length; i++){
+        for(var j = 0; j < m[0].length; j++){
+            ans[j].push(m[i][j]);
+        };
+    };
+
+    return ans;
 }
 
 // function matrix_pseudoinverse(m) {
