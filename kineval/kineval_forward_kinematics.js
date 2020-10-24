@@ -51,7 +51,6 @@ function traverseFKBase() {
 }
 function traverseFKLink(link_in) {
     tempMstack = matrix_copy(robot.joints[robot.links[link_in].parent].xform);
-    // tempMstack = matrix_multiply(tempMstack, robot.links[link_in].xform);
     robot.links[link_in].xform = matrix_copy(tempMstack);
 
     // end traversal if no children, 
