@@ -1,4 +1,4 @@
-//CI grader generates report at 25-10-2020-16-07-11
+//CI grader generates report at 25-10-2020-18-07-31
 grade = 
 {
   "chrisree": {
@@ -211,15 +211,15 @@ grade =
         ]
       }, 
       "FSMDance_SetpointControl": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Setpoint control test failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 1 test cases passed"
+          "1 out of 1 test cases passed"
         ]
       }, 
       "FSMDance_FSM": {
