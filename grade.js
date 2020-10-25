@@ -1,4 +1,4 @@
-//CI grader generates report at 24-10-2020-18-07-21
+//CI grader generates report at 25-10-2020-00-09-23
 grade = 
 {
   "chrisree": {
@@ -197,7 +197,7 @@ grade =
         "test results": {
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "quaternionFromAxisAngle undefined\nquaternionNormalize undefined\nquaternionMultiply undefined\nquaternionToRotationMatrix undefined\nAt least one function undefined\n"
+            "Stderr": "Error message too long, print partially: /chrisree/FSMDance_Quaternion/test_0.js:127\n    return matrix_multiply(q1, q2);\n    ^\n\nReferenceError: matrix_multiply is not defined\n    at Object.quaternion_to_rotation_matrix [as quaternionToRotationMatrix] (/chrisree/FSMDance_Quaternion/test_0.js:127:5)\n    at test_main (/chrisree/FSMDance_Quaternion/test_0.js:269:24)\n    at Object.<anonymous> (/home/eecs367/ROB511_EE"
           }
         }, 
         "comments": [
