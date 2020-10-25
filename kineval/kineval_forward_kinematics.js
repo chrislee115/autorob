@@ -42,9 +42,13 @@ function traverseFKBase() {
     baseName = robot.base;
     robot.links[baseName].xform = matrix_copy(robot.origin.xform);
     children = robot.links[baseName].children;
-    children.forEach(function(child_joint) {
-        traverseFKJoint(child_joint);
-    });
+
+    for (var i = 0; i < children.length; ++i) {
+        traverseFKJoint(children[i]);
+    }
+    // children.forEach(function(child_joint) {
+    //     traverseFKJoint(child_joint);
+    // });
 }
 function traverseFKLink(link_in) {
     robot.links[link_in].xform = matrix_copy(robot.joints[robot.links[link_in].parent].xform);
@@ -53,9 +57,12 @@ function traverseFKLink(link_in) {
     // otherwise recurse to joint
     children = robot.links[link_in].children; 
     if (children != undefined) {
-        children.forEach(function(child_joint) {
-            traverseFKJoint(child_joint);
-        });
+        for (var i = 0; i < children.length; ++i) {
+            traverseFKJoint(children[i]);
+        }
+        // children.forEach(function(child_joint) {
+        //     traverseFKJoint(child_joint);
+        // });
     } 
 }
 function traverseFKJoint(joint_in) {
