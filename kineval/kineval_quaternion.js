@@ -9,6 +9,22 @@
 //   quaternion_multiply
 
 // **** Function stencils are provided below, please uncomment and implement them ****//
+function matrix_multiply(m1, m2) {
+    var m1r = m1.length, m1c = m1[0].length, m2r = m2.length, m2c = m2[0].length;
+    // new matrix has rows of m1 and col of m2
+    var ans = new Array(m1r);
+    for (var r = 0; r < m1r; ++r) {
+        ans[r] = new Array(m2c);
+        for (var c = 0; c < m2c; ++c) {
+            ans[r][c] = 0;
+            // get dot product
+            for (var mid = 0; mid < m1c; ++mid) {
+                ans[r][c] += (m1[r][mid] * m2[mid][c])
+            }
+        }
+    }
+    return ans;
+}
 
 kineval.quaternionFromAxisAngle = function quaternion_from_axisangle(axis,angle) {
     // returns quaternion q as dic, with q.a as real number, q.b as i component, q.c as j component, q.d as k component
