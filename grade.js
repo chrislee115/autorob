@@ -1,4 +1,4 @@
-//CI grader generates report at 25-10-2020-06-06-58
+//CI grader generates report at 25-10-2020-16-07-11
 grade = 
 {
   "chrisree": {
@@ -150,20 +150,20 @@ grade =
         "status": "PENDING", 
         "test results": {
           "Test 2": {
-            "Status": "Succeed", 
-            "Stderr": ""
+            "Status": "Failed", 
+            "Stderr": "Error message too long, print partially: /chrisree/FK_Transforms/test_2.js:1317\n        for (var i = 0; i < children.length; ++i) {\n                                     ^\n\nTypeError: Cannot read property 'length' of undefined\n    at traverseFKLink (/chrisree/FK_Transforms/test_2.js:1317:38)\n    at traverseFKJoint (/chrisree/FK_Transforms/test_2.js:1337:9)\n    at traverseFKLink (/home/eecs367/ROB511_EECS367/Assig"
           }, 
           "Test 3": {
             "Status": "Failed", 
-            "Stderr": "Robot br2 joints transformation incorrect\n"
+            "Stderr": "Error message too long, print partially: /chrisree/FK_Transforms/test_3.js:1096\n        for (var i = 0; i < children.length; ++i) {\n                                     ^\n\nTypeError: Cannot read property 'length' of undefined\n    at traverseFKLink (/chrisree/FK_Transforms/test_3.js:1096:38)\n    at traverseFKJoint (/chrisree/FK_Transforms/test_3.js:1116:9)\n    at traverseFKLink (/home/eecs367/ROB511_EECS367/Assig"
           }, 
           "Test 0": {
-            "Status": "Succeed", 
-            "Stderr": ""
+            "Status": "Failed", 
+            "Stderr": "Error message too long, print partially: /chrisree/FK_Transforms/test_0.js:1182\n        for (var i = 0; i < children.length; ++i) {\n                                     ^\n\nTypeError: Cannot read property 'length' of undefined\n    at traverseFKLink (/chrisree/FK_Transforms/test_0.js:1182:38)\n    at traverseFKJoint (/chrisree/FK_Transforms/test_0.js:1202:9)\n    at traverseFKLink (/home/eecs367/ROB511_EECS367/Assig"
           }, 
           "Test 1": {
-            "Status": "Succeed", 
-            "Stderr": ""
+            "Status": "Failed", 
+            "Stderr": "Error message too long, print partially: /chrisree/FK_Transforms/test_1.js:1051\n    for (var i = 0; i < children.length; ++i) {\n                                 ^\n\nTypeError: Cannot read property 'length' of undefined\n    at traverseFKBase (/chrisree/FK_Transforms/test_1.js:1051:34)\n    at Object.buildFKTransforms (/chrisree/FK_Transforms/test_1.js:1043:5)\n    at Object.robotForwardKinematics (/home/eecs367/ROB5"
           }, 
           "Test 6": {
             "Status": "Succeed", 
@@ -175,7 +175,7 @@ grade =
           }, 
           "Test 4": {
             "Status": "Failed", 
-            "Stderr": "Robot y joints transformation incorrect\n"
+            "Stderr": "Error message too long, print partially: /chrisree/FK_Transforms/test_4.js:1076\n    for (var i = 0; i < children.length; ++i) {\n                                 ^\n\nTypeError: Cannot read property 'length' of undefined\n    at traverseFKBase (/chrisree/FK_Transforms/test_4.js:1076:34)\n    at Object.buildFKTransforms (/chrisree/FK_Transforms/test_4.js:1068:5)\n    at Object.robotForwardKinematics (/home/eecs367/ROB5"
           }, 
           "Test 5": {
             "Status": "Succeed", 
@@ -183,7 +183,7 @@ grade =
           }
         }, 
         "comments": [
-          "6 out of 8 test cases passed"
+          "3 out of 8 test cases passed"
         ]
       }, 
       "FK_JointRendering": {
@@ -197,7 +197,7 @@ grade =
         "test results": {
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /chrisree/FSMDance_Quaternion/test_0.js:127\n    return matrix_multiply(q1, q2);\n    ^\n\nReferenceError: matrix_multiply is not defined\n    at Object.quaternion_to_rotation_matrix [as quaternionToRotationMatrix] (/chrisree/FSMDance_Quaternion/test_0.js:127:5)\n    at test_main (/chrisree/FSMDance_Quaternion/test_0.js:269:24)\n    at Object.<anonymous> (/home/eecs367/ROB511_EE"
+            "Stderr": "quaternionFromAxisAngle test pass\nquaternionNormalize test fail\nquaternionMultiply test pass\nquaternionToRotationMatrix test fail\n[ERROR]: Test fail\n"
           }
         }, 
         "comments": [
