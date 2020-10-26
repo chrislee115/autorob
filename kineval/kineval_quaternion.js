@@ -39,7 +39,7 @@ kineval.quaternionFromAxisAngle = function quaternion_from_axisangle(axis,angle)
 kineval.quaternionNormalize = function quaternion_normalize(q1) {
     // returns quaternion q as dic, with q.a as real number, q.b as i component, q.c as j component, q.d as k component
     var q = {};
-    norm = Math.sqrt(Math.pow(q1.a,2), Math.pow(q1.b,2), Math.pow(q1.c,2), Math.pow(q1.d,2));
+    norm = Math.sqrt(Math.pow(q1.a,2) + Math.pow(q1.b,2) + Math.pow(q1.c,2) + Math.pow(q1.d,2));
     q.a = q1.a / norm;
     q.b = q1.b / norm;
     q.c = q1.c / norm;
@@ -58,17 +58,31 @@ kineval.quaternionMultiply = function quaternion_multiply(q1,q2) {
 }
 
 kineval.quaternionToRotationMatrix = function quaternion_to_rotation_matrix (q) {    
-    q1 = [
-        [q.a, q.d, -1 * q.c, q.b],
-        [-1 * q.d, q.a, q.b, q.c],
-        [q.c, -1 * q.b, q.a, q.d], 
-        [-1 * q.b, -1 * q.c, -1 * q.d, q.a]
+    // returns 4x4 2d rotation matrix
+    // q1 = [
+    //     [q.a, q.d, -1 * q.c, q.b],
+    //     [-1 * q.d, q.a, q.b, q.c],
+    //     [q.c, -1 * q.b, q.a, q.d], 
+    //     [-1 * q.b, -1 * q.c, -1 * q.d, q.a]
+    // ]
+    // q2 = [
+    //     [q.a, q.d, -1 * q.c, -1 * q.b],
+    //     [-1 * q.d, q.a, q.b, -1 * q.c],
+    //     [q.c, -1 * q.b, q.a, -1 * q.d], 
+    //     [q.b, q.c, q.d, q.a]
+    // ]
+    // console.log("here we go", matrix_multiply(q1,q2));
+    // return matrix_multiply(q1, q2);
+    q0 = q.a;
+    q1 = q.b;
+    q2 = q.c;
+    q3 = q.d;
+    ans = [
+        [1 - 2 * (Math.pow(q2, 2) + Math.pow(q3, 2)), 2 * (q1 * q2 - q0 * q3), 2 * (q0 * q2 + q1 * q3), 0],
+        [2 * (q1 * q2 + q0 * q3), 1 - 2 * (Math.pow(q1, 2) + Math.pow(q3, 2)), 2 * (q2 * q3 - q0 * q1), 0],
+        [2 * (q1 * q3 - q0 * q2), 2 * (q0 * q1 + q2 * q3), 1 - 2 * (Math.pow(q1, 2) + Math.pow(q2, 2)), 0],
+        [0,0,0,1]
     ]
-    q2 = [
-        [q.a, q.d, -1 * q.c, -1 * q.b],
-        [-1 * q.d, q.a, q.b, -1 * q.c],
-        [q.c, -1 * q.b, q.a, -1 * q.d], 
-        [q.b, q.c, q.d, q.a]
-    ]
-    return matrix_multiply(q1, q2);
+    console.log(ans);
+    return ans;
 }

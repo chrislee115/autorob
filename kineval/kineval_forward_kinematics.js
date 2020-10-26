@@ -27,6 +27,9 @@ kineval.robotForwardKinematics = function robotForwardKinematics () {
 }
 
 kineval.buildFKTransforms = function buildFKTransforms() {
+    // debugging quarternion
+    q = this.quaternionFromAxisAngle([0,1,2], 1);
+    this.quaternionToRotationMatrix(q);
     // initialize base
     temp = matrix_copy(generate_identity());  
     temp = matrix_multiply(temp, generate_translation_matrix(robot.origin.xyz[0], robot.origin.xyz[1], robot.origin.xyz[2]));
