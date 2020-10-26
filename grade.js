@@ -1,4 +1,4 @@
-//CI grader generates report at 26-10-2020-12-07-42
+//CI grader generates report at 26-10-2020-18-07-50
 grade = 
 {
   "chrisree": {
@@ -193,15 +193,15 @@ grade =
         ]
       }, 
       "FSMDance_Quaternion": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "quaternionFromAxisAngle test pass\nquaternionNormalize test fail\nquaternionMultiply test pass\nquaternionToRotationMatrix test fail\n[ERROR]: Test fail\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 1 test cases passed"
+          "1 out of 1 test cases passed"
         ]
       }, 
       "FSMDance_RexArm": {
