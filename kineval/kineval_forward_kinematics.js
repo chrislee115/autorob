@@ -43,12 +43,10 @@ function traverseFKBase() {
     robot.links[baseName].xform = matrix_copy(robot.origin.xform);
     children = robot.links[baseName].children;
 
-    for (var i = 0; i < children.length; ++i) {
-        traverseFKJoint(children[i]);
-    }
-    // children.forEach(function(child_joint) {
-    //     traverseFKJoint(child_joint);
-    // });
+
+    children.forEach(function(child_joint) {
+        traverseFKJoint(child_joint);
+    });
 }
 function traverseFKLink(link_in) {
     robot.links[link_in].xform = matrix_copy(robot.joints[robot.links[link_in].parent].xform);
@@ -57,12 +55,9 @@ function traverseFKLink(link_in) {
     // otherwise recurse to joint
     children = robot.links[link_in].children; 
     if (children != undefined) {
-        for (var i = 0; i < children.length; ++i) {
-            traverseFKJoint(children[i]);
-        }
-        // children.forEach(function(child_joint) {
-        //     traverseFKJoint(child_joint);
-        // });
+        children.forEach(function(child_joint) {
+            traverseFKJoint(child_joint);
+        });
     } 
 }
 function traverseFKJoint(joint_in) {
@@ -74,7 +69,6 @@ function traverseFKJoint(joint_in) {
     tempMstack = matrix_multiply(tempMstack,  generate_rotation_matrix_Y(tempRPY[1]));
     tempMstack = matrix_multiply(tempMstack,  generate_rotation_matrix_Z(tempRPY[2]));
     robot.joints[joint_in].xform = matrix_copy(tempMstack);
-
 
     if (robot.joints[joint_in].child != undefined) {
         traverseFKLink(robot.joints[joint_in].child);
