@@ -55,7 +55,7 @@ robot.joints.joint3.origin = {xyz: [0.5,0,0], rpy:[0,0,-Math.PI/2]};
 //robot.joints.joint3.axis = [0.707,-0.707,0];
 robot.joints.joint3.axis = [Math.cos(Math.PI/4),-Math.cos(Math.PI/4),0];
 
-robot.joints.joint4 = {parent:"link3", child:"link5"};
+robot.joints.joint4 = {parent:"link1", child:"link5"};
 //robot.joints.joint3.origin = {xyz: [0.5,0,0], rpy:[0,0,-1.57]};
 robot.joints.joint4.origin = {xyz: [0.5,0,0], rpy:[Math.PI/2,0,-Math.PI/2]};
 //robot.joints.joint3.axis = [0.707,-0.707,0];
