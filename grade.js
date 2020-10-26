@@ -1,4 +1,4 @@
-//CI grader generates report at 25-10-2020-18-07-31
+//CI grader generates report at 26-10-2020-00-39-55
 grade = 
 {
   "chrisree": {
@@ -150,20 +150,20 @@ grade =
         "status": "PENDING", 
         "test results": {
           "Test 2": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /chrisree/FK_Transforms/test_2.js:1317\n        for (var i = 0; i < children.length; ++i) {\n                                     ^\n\nTypeError: Cannot read property 'length' of undefined\n    at traverseFKLink (/chrisree/FK_Transforms/test_2.js:1317:38)\n    at traverseFKJoint (/chrisree/FK_Transforms/test_2.js:1337:9)\n    at traverseFKLink (/home/eecs367/ROB511_EECS367/Assig"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 3": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /chrisree/FK_Transforms/test_3.js:1096\n        for (var i = 0; i < children.length; ++i) {\n                                     ^\n\nTypeError: Cannot read property 'length' of undefined\n    at traverseFKLink (/chrisree/FK_Transforms/test_3.js:1096:38)\n    at traverseFKJoint (/chrisree/FK_Transforms/test_3.js:1116:9)\n    at traverseFKLink (/home/eecs367/ROB511_EECS367/Assig"
+            "Stderr": "Robot br2 joints transformation incorrect\n"
           }, 
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /chrisree/FK_Transforms/test_0.js:1182\n        for (var i = 0; i < children.length; ++i) {\n                                     ^\n\nTypeError: Cannot read property 'length' of undefined\n    at traverseFKLink (/chrisree/FK_Transforms/test_0.js:1182:38)\n    at traverseFKJoint (/chrisree/FK_Transforms/test_0.js:1202:9)\n    at traverseFKLink (/home/eecs367/ROB511_EECS367/Assig"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /chrisree/FK_Transforms/test_1.js:1051\n    for (var i = 0; i < children.length; ++i) {\n                                 ^\n\nTypeError: Cannot read property 'length' of undefined\n    at traverseFKBase (/chrisree/FK_Transforms/test_1.js:1051:34)\n    at Object.buildFKTransforms (/chrisree/FK_Transforms/test_1.js:1043:5)\n    at Object.robotForwardKinematics (/home/eecs367/ROB5"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 6": {
             "Status": "Succeed", 
@@ -175,7 +175,7 @@ grade =
           }, 
           "Test 4": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /chrisree/FK_Transforms/test_4.js:1076\n    for (var i = 0; i < children.length; ++i) {\n                                 ^\n\nTypeError: Cannot read property 'length' of undefined\n    at traverseFKBase (/chrisree/FK_Transforms/test_4.js:1076:34)\n    at Object.buildFKTransforms (/chrisree/FK_Transforms/test_4.js:1068:5)\n    at Object.robotForwardKinematics (/home/eecs367/ROB5"
+            "Stderr": "Robot y joints transformation incorrect\n"
           }, 
           "Test 5": {
             "Status": "Succeed", 
@@ -183,7 +183,7 @@ grade =
           }
         }, 
         "comments": [
-          "3 out of 8 test cases passed"
+          "6 out of 8 test cases passed"
         ]
       }, 
       "FK_JointRendering": {
@@ -211,15 +211,15 @@ grade =
         ]
       }, 
       "FSMDance_SetpointControl": {
-        "status": "PASS", 
+        "status": "PENDING", 
         "test results": {
           "Test 0": {
-            "Status": "Succeed", 
-            "Stderr": ""
+            "Status": "Failed", 
+            "Stderr": "[ERROR]: Setpoint control test failed\n"
           }
         }, 
         "comments": [
-          "1 out of 1 test cases passed"
+          "0 out of 1 test cases passed"
         ]
       }, 
       "FSMDance_FSM": {
