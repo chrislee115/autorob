@@ -38,13 +38,22 @@ kineval.buildFKTransforms = function buildFKTransforms() {
     
     traverseFKBase();
 }
-
 function traverseFKBase() {
     baseName = robot.base;
     robot.links[baseName].xform = matrix_copy(robot.origin.xform);
     children = robot.links[baseName].children;
-
-
+    robot_heading = matrix_multiply(robot.links[baseName].xform, generate_translation_matrix(1,0,0));
+    robot_heading = [[robot_heading[0][2]],
+                    [robot_heading[1][2]],
+                    [robot_heading[2][2]],
+                    [robot_heading[3][2]]
+    ]
+    robot_lateral = matrix_multiply(robot.links[baseName].xform, generate_translation_matrix(0,0,1));
+    robot_lateral = [[robot_lateral[0][0]],
+    [robot_lateral[1][0]],
+    [robot_lateral[2][0]],
+    [robot_lateral[3][0]]
+]
     children.forEach(function(child_joint) {
         traverseFKJoint(child_joint);
     });
