@@ -31,9 +31,9 @@ kineval.buildFKTransforms = function buildFKTransforms() {
     // initialize base
     temp = matrix_copy(generate_identity());  
     temp = matrix_multiply(temp, generate_translation_matrix(robot.origin.xyz[0], robot.origin.xyz[1], robot.origin.xyz[2]));
-    temp = matrix_multiply(temp, generate_rotation_matrix_X(robot.origin.rpy[0]));
-    temp = matrix_multiply(temp,  generate_rotation_matrix_Y(robot.origin.rpy[1]));
     temp = matrix_multiply(temp,  generate_rotation_matrix_Z(robot.origin.rpy[2]));
+    temp = matrix_multiply(temp,  generate_rotation_matrix_Y(robot.origin.rpy[1]));
+    temp = matrix_multiply(temp, generate_rotation_matrix_X(robot.origin.rpy[0]));
     robot.origin.xform = matrix_copy(temp);
     
     traverseFKBase();
@@ -66,9 +66,9 @@ function traverseFKJoint(joint_in) {
     tempRPY = robot.joints[joint_in].origin.rpy;
     tempXYZ = robot.joints[joint_in].origin.xyz;
     tempMstack = matrix_multiply(tempMstack, generate_translation_matrix(tempXYZ[0], tempXYZ[1], tempXYZ[2]));
-    tempMstack = matrix_multiply(tempMstack, generate_rotation_matrix_X(tempRPY[0]));
-    tempMstack = matrix_multiply(tempMstack,  generate_rotation_matrix_Y(tempRPY[1]));
     tempMstack = matrix_multiply(tempMstack,  generate_rotation_matrix_Z(tempRPY[2]));
+    tempMstack = matrix_multiply(tempMstack,  generate_rotation_matrix_Y(tempRPY[1]));
+    tempMstack = matrix_multiply(tempMstack, generate_rotation_matrix_X(tempRPY[0]));
     robot.joints[joint_in].xform = matrix_copy(tempMstack);
 
     if (robot.joints[joint_in].child != undefined) {
