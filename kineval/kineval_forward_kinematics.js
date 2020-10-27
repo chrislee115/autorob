@@ -27,13 +27,13 @@ kineval.robotForwardKinematics = function robotForwardKinematics () {
 }
 
 kineval.buildFKTransforms = function buildFKTransforms() {
-    // debugging quarternion
     // initialize base
     temp = matrix_copy(generate_identity());  
     temp = matrix_multiply(temp, generate_translation_matrix(robot.origin.xyz[0], robot.origin.xyz[1], robot.origin.xyz[2]));
     temp = matrix_multiply(temp,  generate_rotation_matrix_Z(robot.origin.rpy[2]));
     temp = matrix_multiply(temp,  generate_rotation_matrix_Y(robot.origin.rpy[1]));
     temp = matrix_multiply(temp, generate_rotation_matrix_X(robot.origin.rpy[0]));
+
     robot.origin.xform = matrix_copy(temp);
     
     traverseFKBase();
@@ -69,6 +69,14 @@ function traverseFKJoint(joint_in) {
     tempMstack = matrix_multiply(tempMstack,  generate_rotation_matrix_Z(tempRPY[2]));
     tempMstack = matrix_multiply(tempMstack,  generate_rotation_matrix_Y(tempRPY[1]));
     tempMstack = matrix_multiply(tempMstack, generate_rotation_matrix_X(tempRPY[0]));
+
+    // assignment 4 rotation
+    tmpAxis = robot.joints[joint_in].axis;
+    tmpAngle = robot.joints[joint_in].angle;
+    tmpQuat = kineval.quaternionFromAxisAngle(tmpAxis, tmpAngle);
+    quatRot = kineval.quaternionToRotationMatrix(tmpQuat);
+    tempMstack = matrix_multiply(tempMstack, quatRot);
+
     robot.joints[joint_in].xform = matrix_copy(tempMstack);
 
     if (robot.joints[joint_in].child != undefined) {
