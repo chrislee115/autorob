@@ -27,7 +27,13 @@ kineval.robotForwardKinematics = function robotForwardKinematics () {
 }
 
 kineval.buildFKTransforms = function buildFKTransforms() {
-    // initialize base
+
+
+
+    // lateral_trans = generate_translation_matrix(1, 0, 0);
+    // robot_lateral = matrix_multiply(lateral_trans, tempXYZ);
+
+    // initialize base=
     temp = matrix_copy(generate_identity());  
     temp = matrix_multiply(temp, generate_translation_matrix(robot.origin.xyz[0], robot.origin.xyz[1], robot.origin.xyz[2]));
     temp = matrix_multiply(temp,  generate_rotation_matrix_Z(robot.origin.rpy[2]));
@@ -36,24 +42,27 @@ kineval.buildFKTransforms = function buildFKTransforms() {
 
     robot.origin.xform = matrix_copy(temp);
     
+    headTemp = matrix_copy(temp);
+    robot_heading = matrix_multiply(headTemp, generate_translation_matrix(0,0,1));
+    robot_heading = [[robot_heading[0][3]],
+    [robot_heading[1][3]],
+    [robot_heading[2][3]],
+    [robot_heading[3][3]]];
+
+    laTemp = matrix_copy(temp);
+    robot_lateral = matrix_multiply(laTemp, generate_translation_matrix(1,0,0));
+    robot_lateral = [[robot_lateral[0][3]],
+    [robot_lateral[1][3]],
+    [robot_lateral[2][3]],
+    [robot_lateral[3][3]]];
+
     traverseFKBase();
 }
 function traverseFKBase() {
     baseName = robot.base;
     robot.links[baseName].xform = matrix_copy(robot.origin.xform);
     children = robot.links[baseName].children;
-    robot_heading = matrix_multiply(robot.links[baseName].xform, generate_translation_matrix(1,0,0));
-    robot_heading = [[robot_heading[0][2]],
-                    [robot_heading[1][2]],
-                    [robot_heading[2][2]],
-                    [robot_heading[3][2]]
-    ]
-    robot_lateral = matrix_multiply(robot.links[baseName].xform, generate_translation_matrix(0,0,1));
-    robot_lateral = [[robot_lateral[0][0]],
-    [robot_lateral[1][0]],
-    [robot_lateral[2][0]],
-    [robot_lateral[3][0]]
-]
+
     children.forEach(function(child_joint) {
         traverseFKJoint(child_joint);
     });
@@ -85,7 +94,6 @@ function traverseFKJoint(joint_in) {
     tmpQuat = kineval.quaternionFromAxisAngle(tmpAxis, tmpAngle);
     quatRot = kineval.quaternionToRotationMatrix(tmpQuat);
     tempMstack = matrix_multiply(tempMstack, quatRot);
-
     robot.joints[joint_in].xform = matrix_copy(tempMstack);
 
     if (robot.joints[joint_in].child != undefined) {
