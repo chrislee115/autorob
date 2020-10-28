@@ -48,18 +48,22 @@ kineval.setpointDanceSequence = function execute_setpoints() {
             firstNine = false;
         }
         if (curTime - tmpIntStart < 200) { // STATE 2
+            kineval.params.dance_pose_index = 2;
             kineval.params.setpoint_target["clavicle_right_yaw"] = 2*Math.PI - Math.PI/8;
             kineval.params.setpoint_target["clavicle_left_roll"] = Math.PI/8;
         } 
         else if (curTime - tmpIntStart < 700) { // STATE 3
+            kineval.params.dance_pose_index = 3;
             kineval.params.setpoint_target["clavicle_right_yaw"] = 2*Math.PI - Math.PI/4;
             kineval.params.setpoint_target["clavicle_left_roll"] = Math.PI/4;
         }
         else if (curTime - tmpIntStart < 900) { // STATE 2
+            kineval.params.dance_pose_index = 2;
             kineval.params.setpoint_target["clavicle_right_yaw"] = 2*Math.PI - Math.PI/8;
             kineval.params.setpoint_target["clavicle_left_roll"] = Math.PI/8;
         } 
         else if (curTime - tmpIntStart < 1200) { // STATE 3
+            kineval.params.dance_pose_index = 3;
             kineval.params.setpoint_target["clavicle_right_yaw"] = 2*Math.PI - Math.PI/4;
             kineval.params.setpoint_target["clavicle_left_roll"] = Math.PI/4;
         } else {
@@ -74,6 +78,7 @@ kineval.setpointDanceSequence = function execute_setpoints() {
     else if (curdate.getSeconds() - startTime >= 7)  {
         if (firstSeven) {
             if (curdate.getMilliseconds() >= 500) { // STATE 3
+                kineval.params.dance_pose_index = 3;
                 kineval.params.setpoint_target["clavicle_right_yaw"] = 2*Math.PI - Math.PI/4;
                 kineval.params.setpoint_target["clavicle_left_roll"] = Math.PI/4;
                 firstSeven = false;
@@ -83,12 +88,14 @@ kineval.setpointDanceSequence = function execute_setpoints() {
     else if (curdate.getSeconds() - startTime >= 5) {
         if (firstFive) {
             if (curdate.getMilliseconds() >= 200) { // STATE 2
+                kineval.params.dance_pose_index = 2;
                 kineval.params.setpoint_target["clavicle_right_yaw"] = 2*Math.PI - Math.PI/8;
                 kineval.params.setpoint_target["clavicle_left_roll"] = Math.PI/8;
                 firstFive = false;
             }
         } 
     } else { // STATE 1
+        kineval.params.dance_pose_index = 1;
         kineval.params.setpoint_target["clavicle_right_yaw"] = -1 * (2*Math.PI - Math.PI/8);
         kineval.params.setpoint_target["clavicle_left_roll"] = -1 * Math.PI/8;
     }
