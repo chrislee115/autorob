@@ -19,8 +19,15 @@
 kineval.setpointDanceSequence = function execute_setpoints() {
 
     // if update not requested, exit routine
-    if (!kineval.params.update_pd_dance) return; 
+    if (!kineval.params.update_pd_dance) {
+        song.pause();
+        return;
+    }
 
+    if (song.paused) {
+        song.load();
+        song.play();
+    }
     // STENCIL: implement FSM to cycle through dance pose setpoints
 }
 
@@ -28,7 +35,6 @@ kineval.setpointClockMovement = function execute_clock() {
 
     // if update not requested, exit routine
     if (!kineval.params.update_pd_clock) return; 
-
     var curdate = new Date();
     for (x in robot.joints) {
         kineval.params.setpoint_target[x] = curdate.getSeconds()/60*2*Math.PI;
@@ -44,6 +50,12 @@ kineval.robotArmControllerSetpoint = function robot_pd_control () {
     kineval.params.update_pd = false; // if update requested, clear request and process setpoint control
 
     // STENCIL: implement P servo controller over joints
+    for (x in robot.joints) {
+        et = kineval.params.setpoint_target[x] - robot.joints[x].angle;
+        robot.joints[x].control = .1 * et;
+    }
+    // et = pendulum.desired - pendulum.angle
+    // pendulum.control = (pendulum.servo.kp * et)
 }
 
 
