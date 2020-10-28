@@ -16,7 +16,7 @@
 
 |\/| |\/| |\/| |\/| |\/| |\/| |\/| |\/| |\/| |\/| |\/| |\/| |\/| |\/| |\/| --*/
 startTime = 0;
-newStartTime = 0;
+tmpIntStart = 0;
 kineval.setpointDanceSequence = function execute_setpoints() {
 
     // if update not requested, exit routine
@@ -34,41 +34,37 @@ kineval.setpointDanceSequence = function execute_setpoints() {
         firstSeven = true;
         firstFive = true;
     }
-    // if (curdate.getSeconds() - startTime >= 10)  {
-    //     if (curdate.getMilliseconds() < 100) {
-    //         kineval.params.setpoint_target["clavicle_right_yaw"] = 2*Math.PI - Math.PI/8;
-    //         kineval.params.setpoint_target["clavicle_left_roll"] = Math.PI/8;
-    //     } else {
-    //         kineval.params.setpoint_target["clavicle_right_yaw"] = 2*Math.PI - Math.PI/4;
-    //         kineval.params.setpoint_target["clavicle_left_roll"] = Math.PI/4;
-    //     }
-    // }
+    // these parts of the robot should not be moving
     kineval.params.setpoint_target["shoulder_right_yaw"] = 0;
     kineval.params.setpoint_target["shoulder_left_yaw"] = 0;
     kineval.params.setpoint_target["upperarm_right_pitch"] = 0;
-    kineval.params.setpoint_target["shoulder_left_yaw"] = 0;
+    kineval.params.setpoint_target["upperarm_left_pitch"] = 0;
+    
+    // FSM for arm movement, tries to match the movement to the song's timing
     if (curdate.getSeconds() - startTime >= 9)  {
         curTime = curdate.getSeconds() * 1000 + curdate.getMilliseconds();
-        if (firstNine) {
-            newStartTime = curTime;
+        if (firstNine) { // sets the start time for this interval, to make timing interval calculation
+            tmpIntStart = curTime;
             firstNine = false;
         }
-        if (curTime - newStartTime < 200) {
+        if (curTime - tmpIntStart < 200) { // STATE 2
             kineval.params.setpoint_target["clavicle_right_yaw"] = 2*Math.PI - Math.PI/8;
             kineval.params.setpoint_target["clavicle_left_roll"] = Math.PI/8;
         } 
-        else if (curTime - newStartTime < 700) {
+        else if (curTime - tmpIntStart < 700) { // STATE 3
             kineval.params.setpoint_target["clavicle_right_yaw"] = 2*Math.PI - Math.PI/4;
             kineval.params.setpoint_target["clavicle_left_roll"] = Math.PI/4;
         }
-        else if (curTime - newStartTime < 900) {
+        else if (curTime - tmpIntStart < 900) { // STATE 2
             kineval.params.setpoint_target["clavicle_right_yaw"] = 2*Math.PI - Math.PI/8;
             kineval.params.setpoint_target["clavicle_left_roll"] = Math.PI/8;
         } 
-        else if (curTime - newStartTime < 1200) {
+        else if (curTime - tmpIntStart < 1200) { // STATE 3
             kineval.params.setpoint_target["clavicle_right_yaw"] = 2*Math.PI - Math.PI/4;
             kineval.params.setpoint_target["clavicle_left_roll"] = Math.PI/4;
         } else {
+            // full reset of the FSM
+            // AKA back to first state
             startTime = curdate.getSeconds();
             firstNine = true;
             firstSeven = true;
@@ -77,33 +73,28 @@ kineval.setpointDanceSequence = function execute_setpoints() {
     }
     else if (curdate.getSeconds() - startTime >= 7)  {
         if (firstSeven) {
-            if (curdate.getMilliseconds() >= 500) {
+            if (curdate.getMilliseconds() >= 500) { // STATE 3
                 kineval.params.setpoint_target["clavicle_right_yaw"] = 2*Math.PI - Math.PI/4;
                 kineval.params.setpoint_target["clavicle_left_roll"] = Math.PI/4;
                 firstSeven = false;
             }
-        } else {
-            kineval.params.setpoint_target["clavicle_right_yaw"] = 2*Math.PI - Math.PI/4;
-            kineval.params.setpoint_target["clavicle_left_roll"] = Math.PI/4;
-        }
+        } 
     }
     else if (curdate.getSeconds() - startTime >= 5) {
         if (firstFive) {
-            if (curdate.getMilliseconds() >= 200) {
+            if (curdate.getMilliseconds() >= 200) { // STATE 2
                 kineval.params.setpoint_target["clavicle_right_yaw"] = 2*Math.PI - Math.PI/8;
                 kineval.params.setpoint_target["clavicle_left_roll"] = Math.PI/8;
                 firstFive = false;
             }
-        } else {
-            kineval.params.setpoint_target["clavicle_right_yaw"] = 2*Math.PI - Math.PI/8;
-            kineval.params.setpoint_target["clavicle_left_roll"] = Math.PI/8;
-        }
-    } else {
+        } 
+    } else { // STATE 1
         kineval.params.setpoint_target["clavicle_right_yaw"] = -1 * (2*Math.PI - Math.PI/8);
         kineval.params.setpoint_target["clavicle_left_roll"] = -1 * Math.PI/8;
     }
 
-    //up and down movements
+    // FSM for "taps", timed to song
+    // up and down movements in the forearms
     if (curdate.getMilliseconds() % 270 >= 135) {
         kineval.params.setpoint_target["forearm_right_yaw"] = 0;
         kineval.params.setpoint_target["forearm_left_yaw"] = 0;
@@ -111,7 +102,6 @@ kineval.setpointDanceSequence = function execute_setpoints() {
         kineval.params.setpoint_target["forearm_right_yaw"] = Math.PI/6;
         kineval.params.setpoint_target["forearm_left_yaw"] = Math.PI/6;
     }
-    // STENCIL: implement FSM to cycle through dance pose setpoints
 }
 
 kineval.setpointClockMovement = function execute_clock() {
