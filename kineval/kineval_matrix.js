@@ -64,10 +64,11 @@ function matrix_transpose(m) {
     return ans;
 }
 
-// function matrix_pseudoinverse(m) {
-//     // returns pseudoinverse of matrix m
-
-// }
+function matrix_pseudoinverse(m) {
+    // returns pseudoinverse of matrix m
+    var T = matrix_copy(matrix_tranpose(m));
+    return matrix_copy(matrix_multiply(numeric.inv(matrix_multiply(T, m)), T));
+}
 
 // function matrix_invert_affine(m) {
 //     // returns 2D array that is the invert affine of 4-by-4 matrix m
