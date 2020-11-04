@@ -1,4 +1,4 @@
-//CI grader generates report at 03-11-2020-00-24-30
+//CI grader generates report at 04-11-2020-00-10-43
 grade = 
 {
   "chrisree": {
@@ -135,7 +135,7 @@ grade =
         ]
       }, 
       "FK_MatrixRoutines": {
-        "status": "PASS", 
+        "status": "CHECK", 
         "test results": {
           "Test 0": {
             "Status": "Succeed", 
@@ -143,11 +143,11 @@ grade =
           }
         }, 
         "comments": [
-          "1 out of 1 test cases passed"
+          "Point: 2/2, due day check pass, good work!"
         ]
       }, 
       "FK_Transforms": {
-        "status": "PASS", 
+        "status": "CHECK", 
         "test results": {
           "Test 2": {
             "Status": "Succeed", 
@@ -183,17 +183,17 @@ grade =
           }
         }, 
         "comments": [
-          "8 out of 8 test cases passed"
+          "Point: 8/8, due day check pass, good work!"
         ]
       }, 
       "FK_JointRendering": {
-        "status": "PENDING", 
+        "status": "CHECK", 
         "comments": [
-          ""
+          "Point: 2/2, due day check pass, good work!"
         ]
       }, 
       "FSMDance_Quaternion": {
-        "status": "PASS", 
+        "status": "CHECK", 
         "test results": {
           "Test 0": {
             "Status": "Succeed", 
@@ -201,7 +201,7 @@ grade =
           }
         }, 
         "comments": [
-          "1 out of 1 test cases passed"
+          "Point: 6/6, due day check pass, good work!"
         ]
       }, 
       "FSMDance_RexArm": {
@@ -211,13 +211,13 @@ grade =
         ]
       }, 
       "FSMDance_BaseControl": {
-        "status": "PENDING", 
+        "status": "CHECK", 
         "comments": [
-          ""
+          "Point: 2/2, due day check pass, good work!"
         ]
       }, 
       "FSMDance_SetpointControl": {
-        "status": "PASS", 
+        "status": "CHECK", 
         "test results": {
           "Test 0": {
             "Status": "Succeed", 
@@ -225,13 +225,13 @@ grade =
           }
         }, 
         "comments": [
-          "1 out of 1 test cases passed"
+          "Point: 2/2, due day check pass, good work!"
         ]
       }, 
       "FSMDance_FSM": {
-        "status": "PENDING", 
+        "status": "CHECK", 
         "comments": [
-          ""
+          "Point: 2/2, due day check pass, good work!"
         ]
       }, 
       "IK_Jacobian": {
@@ -323,7 +323,7 @@ grade =
         "status": 3.17
       }, 
       {
-        "status": "PENDING"
+        "status": 2.5
       }, 
       {
         "status": "PENDING"
