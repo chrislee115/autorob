@@ -43,6 +43,21 @@ kineval.randomizeIKtrial = function randomIKtrial () {
 kineval.iterateIK = function iterate_inverse_kinematics(endeffector_target_world, endeffector_joint, endeffector_position_local) {
 
     // STENCIL: implement inverse kinematics iteration
+
+    // [NOTICE]: Please assign the following 3 variables to test against CI grader
+
+    // ---------------------------------------------------------------------------
+    // robot.dx = []              // Error term, matrix size: 6 x 1, e.g., [[1],[1],[1],[0],[0],[0]]
+    // robot.jacobian = []        // Jacobian matrix of current IK iteration matrix size: 6 x N
+    // robot.dq = []              // Joint configuration change term (don't include step length)  
+    // ---------------------------------------------------------------------------
+
+    // Explanation of above 3 variables:
+    // robot.dq = T(robot.jacobian) * robot.dx  // where T(robot.jacobian) means apply some transformations to the Jacobian matrix, it could be Transpose, PseudoInverse, etc.
+    // dtheta = alpha * robot.dq   // alpha: step length
+
+
+
 }
 
 
