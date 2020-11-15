@@ -41,7 +41,6 @@ kineval.randomizeIKtrial = function randomIKtrial () {
 }
 
 kineval.iterateIK = function iterate_inverse_kinematics(endeffector_target_world, endeffector_joint, endeffector_position_local) {
-
     // STENCIL: implement inverse kinematics iteration
 
     // [NOTICE]: Please assign the following 3 variables to test against CI grader
@@ -51,6 +50,33 @@ kineval.iterateIK = function iterate_inverse_kinematics(endeffector_target_world
     // robot.jacobian = []        // Jacobian matrix of current IK iteration matrix size: 6 x N
     // robot.dq = []              // Joint configuration change term (don't include step length)  
     // ---------------------------------------------------------------------------
+    
+    // TODO: verify this somewhere
+    // Have to take the difference between the xyz and the rpy 
+    var xd = endeffector_target_world;
+    var xn = matrix_multiply(robot.joints[endeffector_joint].xform, endeffector_position_local);
+    var curOrientation = robot.joints[endeffector_joint].origin.rpy;
+    robot.dx = [0,0,0,0,0,0];
+    for (var i = 0; i < 3; ++i) {
+        robot.dx[i] = xd.position[i] - xn[i]
+    }
+    for (var i = 0; i < 3; ++i) {
+        robot.dx[i + 3] = xd.orientation[i] - curOrientation[i];
+    }
+
+    var qn = robot.joints[endeffector_joint].angle;
+    var jacobian; //TODO:
+    if (kineval.params.ik_pseudoinverse) {
+        invJ = matrix_pseudoinverse(jacobian) * matrix_copy(robot.dx);
+    } else {
+        invJ = matrix_multiply(matrix_transpose(jacobian), matrix_copy(robot.dx));
+    }
+    robot.jacobian = matrix_copy(matrix_multiply(invJ, robot.dx))
+    
+    // var gamma = kineval.params.ik_steplength
+    // var gammaJ = matrix_copy(robot.jacobian)
+    // gammaJ = gammaJ.map(function(x) { return x * gamma; });
+    // robot.dq = qn + gammaJ
 
     // Explanation of above 3 variables:
     // robot.dq = T(robot.jacobian) * robot.dx  // where T(robot.jacobian) means apply some transformations to the Jacobian matrix, it could be Transpose, PseudoInverse, etc.
