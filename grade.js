@@ -1,4 +1,4 @@
-//CI grader generates report at 15-11-2020-08-23-43
+//CI grader generates report at 15-11-2020-19-09-54
 grade = 
 {
   "chrisree": {
@@ -239,11 +239,11 @@ grade =
         "test results": {
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "robot.jacobian not defined, please check whether you have assigned value for robot.jacobian\n"
+            "Stderr": "Error message too long, print partially: /chrisree/IK_Jacobian/test_0.js:535\n    for(var i = 0; i < m.length; i++){\n                         ^\n\nTypeError: Cannot read property 'length' of undefined\n    at matrix_transpose (/chrisree/IK_Jacobian/test_0.js:535:26)\n    at Object.iterate_inverse_kinematics [as iterateIK] (/chrisree/IK_Jacobian/test_0.js:1620:32)\n    at Object.robot_inverse_kinematics [as robotInvers"
           }, 
           "Test 1": {
             "Status": "Failed", 
-            "Stderr": "robot.jacobian not defined, please check whether you have assigned value for robot.jacobian\n"
+            "Stderr": "Error message too long, print partially: /chrisree/IK_Jacobian/test_1.js:535\n    for(var i = 0; i < m.length; i++){\n                         ^\n\nTypeError: Cannot read property 'length' of undefined\n    at matrix_transpose (/chrisree/IK_Jacobian/test_1.js:535:26)\n    at Object.iterate_inverse_kinematics [as iterateIK] (/chrisree/IK_Jacobian/test_1.js:1620:32)\n    at Object.robot_inverse_kinematics [as robotInvers"
           }
         }, 
         "comments": [
@@ -255,15 +255,15 @@ grade =
         "test results": {
           "Test 2": {
             "Status": "Failed", 
-            "Stderr": "Target not reached\n"
+            "Stderr": "Error message too long, print partially: /chrisree/IK_JTranspose/test_2.js:541\n    for(var i = 0; i < m.length; i++){\n                         ^\n\nTypeError: Cannot read property 'length' of undefined\n    at matrix_transpose (/chrisree/IK_JTranspose/test_2.js:541:26)\n    at Object.iterate_inverse_kinematics [as iterateIK] (/chrisree/IK_JTranspose/test_2.js:1626:32)\n    at Object.robot_inverse_kinematics [as robot"
           }, 
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "robot.dq not defined, please check whether you have assigned value for robot.dq\n"
+            "Stderr": "Error message too long, print partially: /chrisree/IK_JTranspose/test_0.js:541\n    for(var i = 0; i < m.length; i++){\n                         ^\n\nTypeError: Cannot read property 'length' of undefined\n    at matrix_transpose (/chrisree/IK_JTranspose/test_0.js:541:26)\n    at Object.iterate_inverse_kinematics [as iterateIK] (/chrisree/IK_JTranspose/test_0.js:1626:32)\n    at Object.robot_inverse_kinematics [as robot"
           }, 
           "Test 1": {
             "Status": "Failed", 
-            "Stderr": "robot.dq not defined, please check whether you have assigned value for robot.dq\n"
+            "Stderr": "Error message too long, print partially: /chrisree/IK_JTranspose/test_1.js:541\n    for(var i = 0; i < m.length; i++){\n                         ^\n\nTypeError: Cannot read property 'length' of undefined\n    at matrix_transpose (/chrisree/IK_JTranspose/test_1.js:541:26)\n    at Object.iterate_inverse_kinematics [as iterateIK] (/chrisree/IK_JTranspose/test_1.js:1626:32)\n    at Object.robot_inverse_kinematics [as robot"
           }
         }, 
         "comments": [
@@ -275,15 +275,15 @@ grade =
         "test results": {
           "Test 2": {
             "Status": "Failed", 
-            "Stderr": "Target not reached\n"
+            "Stderr": "Error message too long, print partially: /chrisree/IK_JPseudoInverse/test_2.js:556\n    var T = matrix_copy(matrix_tranpose(m));\n            ^\n\nReferenceError: matrix_tranpose is not defined\n    at matrix_pseudoinverse (/chrisree/IK_JPseudoInverse/test_2.js:556:13)\n    at Object.iterate_inverse_kinematics [as iterateIK] (/chrisree/IK_JPseudoInverse/test_2.js:1624:16)\n    at Object.robot_inverse_kinematics [as rob"
           }, 
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "robot.dq not defined, please check whether you have assigned value for robot.dq\n"
+            "Stderr": "Error message too long, print partially: /chrisree/IK_JPseudoInverse/test_0.js:556\n    var T = matrix_copy(matrix_tranpose(m));\n            ^\n\nReferenceError: matrix_tranpose is not defined\n    at matrix_pseudoinverse (/chrisree/IK_JPseudoInverse/test_0.js:556:13)\n    at Object.iterate_inverse_kinematics [as iterateIK] (/chrisree/IK_JPseudoInverse/test_0.js:1624:16)\n    at Object.robot_inverse_kinematics [as rob"
           }, 
           "Test 1": {
             "Status": "Failed", 
-            "Stderr": "robot.dq not defined, please check whether you have assigned value for robot.dq\n"
+            "Stderr": "Error message too long, print partially: /chrisree/IK_JPseudoInverse/test_1.js:556\n    var T = matrix_copy(matrix_tranpose(m));\n            ^\n\nReferenceError: matrix_tranpose is not defined\n    at matrix_pseudoinverse (/chrisree/IK_JPseudoInverse/test_1.js:556:13)\n    at Object.iterate_inverse_kinematics [as iterateIK] (/chrisree/IK_JPseudoInverse/test_1.js:1624:16)\n    at Object.robot_inverse_kinematics [as rob"
           }
         }, 
         "comments": [
