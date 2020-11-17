@@ -66,8 +66,17 @@ function matrix_transpose(m) {
 
 function matrix_pseudoinverse(m) {
     // returns pseudoinverse of matrix m
-    var T = matrix_copy(matrix_tranpose(m));
-    return matrix_copy(matrix_multiply(numeric.inv(matrix_multiply(T, m)), T));
+    var tmpT = matrix_transpose(m);
+    var T = [];
+    for (var i = 0; i < tmpT.length; ++i) {
+        if (tmpT[i].length != 0) {
+            T.push(tmpT[i]);
+        } else {
+            break;
+        }
+    }
+    var copyM = matrix_copy(m);
+    return matrix_multiply(numeric.inv(matrix_multiply(T, copyM)), T);
 }
 
 // function matrix_invert_affine(m) {

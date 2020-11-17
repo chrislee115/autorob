@@ -50,34 +50,83 @@ kineval.iterateIK = function iterate_inverse_kinematics(endeffector_target_world
     // robot.jacobian = []        // Jacobian matrix of current IK iteration matrix size: 6 x N
     // robot.dq = []              // Joint configuration change term (don't include step length)  
     // ---------------------------------------------------------------------------
-    
-    // TODO: verify this somewhere
-    // Have to take the difference between the xyz and the rpy 
-    var xd = endeffector_target_world;
-    var xn = matrix_multiply(robot.joints[endeffector_joint].xform, endeffector_position_local);
-    var curOrientation = robot.joints[endeffector_joint].origin.rpy;
-    robot.dx = [0,0,0,0,0,0];
-    for (var i = 0; i < 3; ++i) {
-        robot.dx[i] = xd.position[i] - xn[i]
-    }
-    for (var i = 0; i < 3; ++i) {
-        robot.dx[i + 3] = xd.orientation[i] - curOrientation[i];
+    // Get all joints on endeffector path
+    var joints = [];
+    var curJoint = robot.joints[endeffector_joint];
+    while (true) {
+        var parentLink = curJoint.parent;
+        if (parentLink == 'base') {
+            break;
+        }
+        joints.unshift(robot.links[parentLink].parent);
+        curJoint = robot.joints[robot.links[parentLink].parent];
     }
 
-    var qn = robot.joints[endeffector_joint].angle;
-    var jacobian; //TODO:
+    // calculates the jacobian
+    robot.jacobian = [[],[],[],[],[],[]];
+    joints.forEach(function(cur_joint) {
+        cur_joint = robot.joints[cur_joint];
+        // Have to take the difference between the xyz and the rpy 
+        var xd = endeffector_target_world;
+        var xn = matrix_multiply(cur_joint.xform, endeffector_position_local);
+        var curOrientation = cur_joint.origin.rpy;
+        robot.dx = [[0],[0],[0],[0],[0],[0]];
+        for (var i = 0; i < 3; ++i) {
+            robot.dx[i][0] = xd.position[i] - xn[i]
+        }
+        for (var i = 0; i < 3; ++i) {
+            robot.dx[i + 3][0] = xd.orientation[i] - curOrientation[i];
+        }
+    
+        var tmpAxis = [[0],[0],[0],[1]];
+        for (var i = 0; i < 3; ++i) {
+            tmpAxis[i][0] = cur_joint.axis[i];
+        }
+        var tiw = matrix_copy(cur_joint.xform);
+        var kiw = matrix_multiply(matrix_copy(tiw), tmpAxis);
+
+        tiw = matrix_copy(cur_joint.xform);
+        var zero = [[0],[0],[0],[1]];
+        var oiw = matrix_multiply(matrix_copy(tiw), zero);
+        
+        tiw = matrix_copy(cur_joint.xform);
+        var ptool = matrix_multiply(tiw, endeffector_position_local);
+
+        // Jvi - linear
+        var kiwMinusOiw = [];
+        for (var i = 0; i < oiw.length; ++i) {
+            kiwMinusOiw.push(kiw[i][0] - oiw[i][0]);
+        }
+        var ptoolMinusOiw = [];
+        for (var i = 0; i < oiw.length; ++i) {
+            ptoolMinusOiw.push(ptool[i][0] - oiw[i][0]);
+        }
+        var cross = vector_cross(kiwMinusOiw, ptoolMinusOiw)
+        for (var i = 0; i < 3; ++i) {
+            robot.jacobian[i].push(cross[i]);
+        }
+        // Jwi - angular 
+        for (var i = 0; i < 3; ++i) {
+            robot.jacobian[i + 3].push(kiwMinusOiw[i]);
+        }
+    });
+
+    var jacobian = matrix_copy(robot.jacobian);
+    var invJ;
     if (kineval.params.ik_pseudoinverse) {
-        invJ = matrix_pseudoinverse(jacobian) * matrix_copy(robot.dx);
+        invJ = matrix_multiply(matrix_pseudoinverse(jacobian), matrix_copy(robot.dx));
     } else {
         invJ = matrix_multiply(matrix_transpose(jacobian), matrix_copy(robot.dx));
     }
-    robot.jacobian = matrix_copy(matrix_multiply(invJ, robot.dx))
-    
-    // var gamma = kineval.params.ik_steplength
-    // var gammaJ = matrix_copy(robot.jacobian)
-    // gammaJ = gammaJ.map(function(x) { return x * gamma; });
-    // robot.dq = qn + gammaJ
+    robot.dq = matrix_copy(matrix_multiply(invJ, robot.dx))
 
+    var gamma = kineval.params.ik_steplength;
+    var i = 0;
+    joints.forEach(function(cur_joint) {
+        cur_joint = robot.joints[cur_joint];
+        cur_joint.control = cur_joint.angle + (gamma * robot.dq[i]);
+        i = i + 1;
+    });
     // Explanation of above 3 variables:
     // robot.dq = T(robot.jacobian) * robot.dx  // where T(robot.jacobian) means apply some transformations to the Jacobian matrix, it could be Transpose, PseudoInverse, etc.
     // dtheta = alpha * robot.dq   // alpha: step length
