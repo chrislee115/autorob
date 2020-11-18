@@ -1,4 +1,4 @@
-//CI grader generates report at 18-11-2020-00-06-14
+//CI grader generates report at 18-11-2020-06-05-18
 grade = 
 {
   "chrisree": {
@@ -235,19 +235,19 @@ grade =
         ]
       }, 
       "IK_Jacobian": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Incorrect IK Jacobian for test 0\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Incorrect IK Jacobian for test 1\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 2 test cases passed"
+          "2 out of 2 test cases passed"
         ]
       }, 
       "IK_JTranspose": {
@@ -278,16 +278,16 @@ grade =
             "Stderr": "Error increased during iteration, implementation incorrect\n"
           }, 
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: IK_JPseudoInverse test 0 failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: IK_JPseudoInverse test 1 failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 3 test cases passed"
+          "2 out of 3 test cases passed"
         ]
       }, 
       "MotionPlan_Collision": {
