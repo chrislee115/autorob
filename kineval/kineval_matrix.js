@@ -51,7 +51,7 @@ function matrix_multiply(m1, m2) {
 // this might be wrong lol
 function matrix_transpose(m) {
     var ans = [];
-    for(var i = 0; i < m.length; i++){
+    for(var i = 0; i < m[0].length; i++){
         ans.push([]);
     };
 
@@ -65,18 +65,17 @@ function matrix_transpose(m) {
 }
 
 function matrix_pseudoinverse(m) {
-    // returns pseudoinverse of matrix m
-    var tmpT = matrix_transpose(m);
-    var T = [];
-    for (var i = 0; i < tmpT.length; ++i) {
-        if (tmpT[i].length != 0) {
-            T.push(tmpT[i]);
-        } else {
-            break;
-        }
+    if (m.length == m[0].length) {
+        return numeric.inv(m);
     }
+    // returns pseudoinverse of matrix m
+    var T = matrix_transpose(m);
     var copyM = matrix_copy(m);
-    return matrix_multiply(numeric.inv(matrix_multiply(T, copyM)), T);
+    if (m.length > m[0].length) {
+        return matrix_multiply(numeric.inv(matrix_multiply(matrix_copy(T), copyM)), T);
+    } else {
+        return matrix_multiply(T, numeric.inv(matrix_multiply(copyM, matrix_copy(T))));
+    }
 }
 
 // function matrix_invert_affine(m) {
