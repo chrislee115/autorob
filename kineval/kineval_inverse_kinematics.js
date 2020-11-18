@@ -88,7 +88,7 @@ kineval.iterateIK = function iterate_inverse_kinematics(endeffector_target_world
         for (var i = 0; i < oiw.length; ++i) {
             ptoolMinusOiw.push(ptool[i][0] - oiw[i][0]);
         }
-        var cross = vector_cross(kiwMinusOiw, ptoolMinusOiw)
+        var cross = vector_cross(kiwMinusOiw, ptoolMinusOiw);
         for (var i = 0; i < 3; ++i) {
             // Jvi - linear
             robot.jacobian[i].push(cross[i]);
@@ -96,8 +96,7 @@ kineval.iterateIK = function iterate_inverse_kinematics(endeffector_target_world
             robot.jacobian[i + 3].push(kiwMinusOiw[i]);
         }
     }); 
-    var cur_joint = endeffector_joint;
-    cur_joint = robot.joints[cur_joint];
+    var cur_joint = robot.joints[endeffector_joint];
     // Have to take the difference between the xyz and the rpy 
     var xd = endeffector_target_world;
     var xn = matrix_multiply(matrix_copy(cur_joint.xform), endeffector_position_local);
@@ -123,7 +122,7 @@ kineval.iterateIK = function iterate_inverse_kinematics(endeffector_target_world
     var i = 0;
     joints.forEach(function(cur_joint) {
         cur_joint = robot.joints[cur_joint];
-        cur_joint.control = cur_joint.control + (gamma * robot.dq[i]);
+        cur_joint.angle = cur_joint.angle + (gamma * robot.dq[i]);
         i = i + 1;
     });
     // Explanation of above 3 variables:
