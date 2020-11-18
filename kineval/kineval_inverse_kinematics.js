@@ -127,7 +127,7 @@ kineval.iterateIK = function iterate_inverse_kinematics(endeffector_target_world
     }
     // OFFICE HOURS - this is supopsed to be kept at 0?
     // for (var i = 0; i < 3; ++i) {
-    //     robot.dx[i + 3][0] = xd.orientation[i] - curOrientation[2 - i];
+    //     robot.dx[i + 3][0] = xd.orientation[i] - curOrientation[i];
     // }
 
     var jacobian = matrix_copy(robot.jacobian);
