@@ -35,14 +35,32 @@
 //////////////////////////////////////////////////
 /////     STUDENT HELPERS
 //////////////////////////////////////////////////
+function myTestCollision(elem) {
+    // console.losg(elem);
+    var i, j;
+    console.log(range);
+    // test for collision with each object
+    for (j=0;j<range.length;j++) {
+        // assume configuration is in collision
+        var in_collision = true;
+        for (i = 0; i < range[j].length; ++i) {
+            if ((elem.x<range[j][i][0])||(elem.y>range[j][i][1]))
+                in_collision = false;
+        }
+        // return collision, if configuration inside obstacle extents along all dimensions
+        if (in_collision)
+            return true;
+    }
+
+    // return no collision, if no collision detected with any obstacle
+    return false;
+}
 
 function testCollision(q) {
 
     var j;
-
     // test for collision with each object
     for (j=0;j<range.length;j++) {
-
         // assume configuration is in collision
         var in_collision = true;
 
@@ -236,7 +254,7 @@ function initSearch() {
 
     // specify start and goal configurations
     q_start_config = [0,0];
-    q_goal_config = [4,4];
+    q_goal_config = [4.240028409957886, 0.7492045593261719];
     q_init = q_start_config;
     q_goal = q_goal_config;
 
