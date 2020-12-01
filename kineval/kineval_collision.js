@@ -55,31 +55,32 @@ kineval.poseIsCollision = function robot_collision_test(q) {
 
     // traverse robot kinematics to test each body for collision
     // STENCIL: implement forward kinematics for collision detection
-    var links = [];
-    for (x in robot.links) {
-        links.push(x);
-    }
-    links.forEach(function(link) {
-        var obstacles = robot_obstacles;
-        obstacles.forEach(function(obst) {
-            var radius = obst.radius;
-            var loc_x = obst.location[0];
-            var loc_y = obst.location[1];
-            var x_min = robot.links[link].bbox.min.x;
-            var x_max = robot.links[link].bbox.max.x;
-            var y_min = robot.links[link].bbox.min.y;
-            var y_max = robot.links[link].bbox.max.y;
+    // var links = [];
+    // for (x in robot.links) {
+    //     links.push(x);
+    // }
+    // links.forEach(function(link) {
+    //     var obstacles = robot_obstacles;
+    //     obstacles.forEach(function(obst) {
+    //         var radius = obst.radius;
+    //         var loc_x = obst.location[0];
+    //         var loc_y = obst.location[1];
+    //         var x_min = robot.links[link].bbox.min.x;
+    //         var x_max = robot.links[link].bbox.max.x;
+    //         var y_min = robot.links[link].bbox.min.y;
+    //         var y_max = robot.links[link].bbox.max.y;
 
-            if ((loc_x + radius > x_min) &&
-               (loc_x - radius < x_max) &&
-               (loc_y + radius > y_min) &&
-               (loc_y - radius < y_max)) {
-                return robot.links[link];
-            }
-        });
-    });
-    // return robot_collision_forward_kinematics(q);
-    return;
+    //         if ((loc_x + radius > x_min) &&
+    //            (loc_x - radius < x_max) &&
+    //            (loc_y + radius > y_min) &&
+    //            (loc_y - radius < y_max)) {
+    //             return robot.links[link];
+    //         }
+    //     });
+    // });
+    var what = robot_collision_forward_kinematics(q);
+    console.log("what", what);
+    return what;
     /* 
     For each link in robot
         For each obstacle in world
@@ -89,6 +90,40 @@ kineval.poseIsCollision = function robot_collision_test(q) {
     */
 }
 
+function robot_collision_forward_kinematics(q) {
+    var baseName = robot.base;
+    robot.links[baseName].xform = matrix_copy(robot.origin.xform);
+    var mstack = robot.links[baseName].xform;
+    
+    link = robot.links[baseName];
+    for (i in link.children) {
+        local_collision = traverse_collision_forward_kinematics_joint(robot.joints[link.children[i]],mstack,q)
+        if (local_collision)
+            return local_collision;
+    }
+    return false;
+}s
+function traverse_collision_forward_kinematics_joint(joint, mstack, q) {
+    if (joint.child != undefined) {
+        var tempRPY = joint.origin.rpy;
+        var tempXYZ = joint.origin.xyz;
+        mstack = matrix_multiply(mstack, generate_translation_matrix(tempXYZ[0], tempXYZ[1], tempXYZ[2]));
+        mstack = matrix_multiply(mstack,  generate_rotation_matrix_Z(tempRPY[2]));
+        mstack = matrix_multiply(mstack,  generate_rotation_matrix_Y(tempRPY[1]));
+        mstack = matrix_multiply(mstack, generate_rotation_matrix_X(tempRPY[0]));
+
+            // assignment 4 rotation
+        var tmpAxis = joint.axis;
+        var tmpAngle = joint.angle;
+        var tmpQuat = kineval.quaternionFromAxisAngle(tmpAxis, tmpAngle);
+        var quatRot = kineval.quaternionToRotationMatrix(tmpQuat);
+        mstack = matrix_multiply(mstack, quatRot);
+
+        var local_collision = traverse_collision_forward_kinematics_link(robot.links[joint.child], robot.links[joint.child].xform, q);
+        if (local_collision) return local_collision;
+    }
+    return false;
+}
 
 
 function traverse_collision_forward_kinematics_link(link,mstack,q) {
