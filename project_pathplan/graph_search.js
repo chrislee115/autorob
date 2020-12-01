@@ -31,10 +31,8 @@ function updateRoundFactor() {
         ++roundFactor;
         tmp = tmp * 10;
     }
-    console.log(roundFactor);
     roundedGoal[0] = Number(q_goal[0].toFixed(roundFactor));
     roundedGoal[1] = Number(q_goal[1].toFixed(roundFactor));
-    console.log(roundedGoal);
 }
 function initSearchGraph() {
     updateRoundFactor();
@@ -136,8 +134,6 @@ function iterateGraphSearch() {
         return "iterating";
     } else {
         drawHighlightedPathGraph(visit_queue[0]);
-        console.log(visit_queue[0])
-        console.log(roundedGoal);
         search_iterate = false;
         return "succeeded";
     }

@@ -212,9 +212,9 @@ function initSearch() {
     //search_alg = "depth-first";
     //search_alg = "breadth-first";
     //search_alg = "greedy-best-first";
-    search_alg = "A-star";
+    // search_alg = "A-star";
     //search_alg = "RRT";
-    //search_alg = "RRT-connect";
+    search_alg = "RRT-connect";
     //search_alg = "RRT-star";
 
     // specify default the world for the planner
