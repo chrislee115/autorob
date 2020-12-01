@@ -57,6 +57,24 @@ kineval.poseIsCollision = function robot_collision_test(q) {
     // STENCIL: implement forward kinematics for collision detection
     //return robot_collision_forward_kinematics(q);
 
+    var links = [];
+    for (x in robot.links) {
+        links.push(x);
+    }
+    links.forEach(function(link) {
+        var obstacles = robot_obstacles;
+        obstacles.forEach(function(obst) {
+            console.log("pls", obst, link);
+        });
+    });
+    return;
+    /* 
+    For each link in robot
+        For each obstacle in world
+            If intersection(link, obstacle)
+                Return link is in collision
+    Return no collision;
+    */
 }
 
 
