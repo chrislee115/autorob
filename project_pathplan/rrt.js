@@ -137,18 +137,14 @@ function ihatejs(arr, vtx) {
     }
     return -1;
 }
-function dfsPath(path, T, q) {
+function dfsPath(T, q) {
     //TODO: for reconstructing path when were done
     var isInit = (T.vertices[0].vertex == q_init);
     var goal = isInit ? q : q_goal;
     var dfs = [];
     var visited = [];
+    var path = [];
     var start = isInit ? q_init : q;
-    if (findVertexIdx(T, start) == -1) {
-        var tmp = findNearestNeighbor(T, start);
-        start = tmp[0];
-    }
-    console.log(findVertexIdx(T, start))
     dfs.push(start);
     while (dfs.length != 0) {
         var cur_vtx = dfs.pop();
@@ -215,12 +211,13 @@ function iterateRRTConnect() {
     }
     var q_rand = randomConfig();
     if (extendRRT(T_a, q_rand) != "Trapped") {
-        var q_new = T_a.vertices[T_a.newest].vertex;
-        if (connectRRT(T_b, q_new) == "Reached") {
+        var q_newA = T_a.vertices[T_a.newest].vertex;
+        if (connectRRT(T_b, q_newA) == "Reached") {
+            var q_newB = T_b.vertices[T_b.newest].vertex;
             // idk if this works
-            var path = [];
-            path = dfsPath(path, T_a, q_new);
-            path = dfsPath(path, T_b, q_new);
+            var pathA = dfsPath(T_a, q_newA);
+            var pathB = dfsPath(T_b, q_newB);
+            var path = pathA.concat(pathB);
             drawHighlightedPath(path);
             search_iterate = false;
             return "succeeded";
