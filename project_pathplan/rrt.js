@@ -108,7 +108,7 @@ function randomConfig() {
 
 
 function findNearestNeighbor(T, q) {
-    var best = 10000000000;
+    var best = 10000000000000;
     var best_index = -1;
     for (var i = 0; i < T.vertices.length; ++i) {
         // This is how we do dist to goal right
@@ -214,7 +214,11 @@ function iterateRRTConnect() {
         var q_newA = T_a.vertices[T_a.newest].vertex;
         if (connectRRT(T_b, q_newA) == "Reached") {
             var q_newB = T_b.vertices[T_b.newest].vertex;
-            // idk if this works
+            // swap it, bc ordering gets messed up
+            if (T_a.vertices[0].vertex != q_init) {
+                [T_a, T_b] = [T_b, T_a];
+                [q_newA, q_newB] = [q_newB, q_newA];
+            }
             var pathA = dfsPath(T_a, q_newA);
             var pathB = dfsPath(T_b, q_newB);
             var path = pathA.concat(pathB);
