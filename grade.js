@@ -1,4 +1,4 @@
-//CI grader generates report at 01-12-2020-01-08-44
+//CI grader generates report at 01-12-2020-13-04-27
 grade = 
 {
   "chrisree": {
@@ -295,15 +295,15 @@ grade =
         "test results": {
           "Test 2": {
             "Status": "Failed", 
-            "Stderr": "[ERROR]: Collision test 2 failed\n"
+            "Stderr": "Error message too long, print partially: pls { location: [ [ 0 ], [ 0.5 ], [ -2 ], [ 1 ] ], radius: 1 } base\npls { location: [ [ 2 ], [ 0.5 ], [ 0 ], [ 1 ] ], radius: 1 } base\npls { location: [ [ -2 ], [ 0.5 ], [ 0 ], [ 1 ] ], radius: 1 } base\npls { location: [ [ 0 ], [ 0.5 ], [ -2 ], [ 1 ] ], radius: 1 } clavicle_right\npls { location: [ [ 2 ], [ 0.5 ], [ 0 ], [ 1 ] ], radius: 1 } clavicle_right\npls { location: [ [ -2 ], [ 0.5 ], [ 0 ], [ 1 ] ], radius: 1 } clavicle_right\npls { location: [ [ 0 ], [ 0.5 ], [ -2 ], [ 1 ] ], radius: 1 } c"
           }, 
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "[ERROR]: Collision test 0 failed\n"
+            "Stderr": "Error message too long, print partially: pls { location: [ [ 0 ], [ 0.5 ], [ -2 ], [ 1 ] ], radius: 1 } base\npls { location: [ [ 2 ], [ 0.5 ], [ 0 ], [ 1 ] ], radius: 1 } base\npls { location: [ [ -2 ], [ 0.5 ], [ 0 ], [ 1 ] ], radius: 1 } base\npls { location: [ [ 0 ], [ 0.5 ], [ -2 ], [ 1 ] ], radius: 1 } clavicle_right\npls { location: [ [ 2 ], [ 0.5 ], [ 0 ], [ 1 ] ], radius: 1 } clavicle_right\npls { location: [ [ -2 ], [ 0.5 ], [ 0 ], [ 1 ] ], radius: 1 } clavicle_right\npls { location: [ [ 0 ], [ 0.5 ], [ -2 ], [ 1 ] ], radius: 1 } c"
           }, 
           "Test 1": {
             "Status": "Failed", 
-            "Stderr": "[ERROR]: Collision test 1 failed\n"
+            "Stderr": "Error message too long, print partially: pls { location: [ [ 0 ], [ 0.5 ], [ -2 ], [ 1 ] ], radius: 1 } base\npls { location: [ [ 2 ], [ 0.5 ], [ 0 ], [ 1 ] ], radius: 1 } base\npls { location: [ [ -2 ], [ 0.5 ], [ 0 ], [ 1 ] ], radius: 1 } base\npls { location: [ [ 0 ], [ 0.5 ], [ -2 ], [ 1 ] ], radius: 1 } clavicle_right\npls { location: [ [ 2 ], [ 0.5 ], [ 0 ], [ 1 ] ], radius: 1 } clavicle_right\npls { location: [ [ -2 ], [ 0.5 ], [ 0 ], [ 1 ] ], radius: 1 } clavicle_right\npls { location: [ [ 0 ], [ 0.5 ], [ -2 ], [ 1 ] ], radius: 1 } c"
           }
         }, 
         "comments": [
@@ -311,27 +311,27 @@ grade =
         ]
       }, 
       "MotionPlan_2DRRTConnect": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 2": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Search time out\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 3": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Search time out\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Search time out\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Search time out\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 4 test cases passed"
+          "4 out of 4 test cases passed"
         ]
       }, 
       "MotionPlan_CSpaceRRTConnect": {
