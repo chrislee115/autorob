@@ -90,17 +90,22 @@ kineval.poseIsCollision = function robot_collision_test(q) {
 }
 
 function robot_collision_forward_kinematics(q) {
+    
     var baseName = robot.base;
     robot.links[baseName].xform = matrix_copy(robot.origin.xform);
     var mstack = robot.links[baseName].xform;
-    
-    link = robot.links[baseName];
-    for (i in link.children) {
-        local_collision = traverse_collision_forward_kinematics_joint(robot.joints[link.children[i]],mstack,q)
-        if (local_collision)
-            return local_collision;
+    local_collision = traverse_collision_forward_kinematics_link(robot.links[baseName],mstack,q)
+    if (local_collision) {
+        return local_collision;
     }
     return false;
+    // link = robot.links[baseName];
+    // for (i in link.children) {
+    //     local_collision = traverse_collision_forward_kinematics_joint(robot.joints[link.children[i]],mstack,q)
+    //     if (local_collision)
+    //         return local_collision;
+    // }
+    // return false;
 }
 function traverse_collision_forward_kinematics_joint(joint, mstack, q) {
     if (joint.child != undefined) {
