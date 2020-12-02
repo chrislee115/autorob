@@ -1,4 +1,4 @@
-//CI grader generates report at 02-12-2020-01-01-13
+//CI grader generates report at 02-12-2020-07-00-49
 grade = 
 {
   "chrisree": {
@@ -295,19 +295,19 @@ grade =
         "test results": {
           "Test 2": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /chrisree/MotionPlan_Collision/test_2.js:807\n}s\n ^\n\nReferenceError: s is not defined\n    at Object.<anonymous> (/chrisree/MotionPlan_Collision/test_2.js:807:2)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1157:10)\n    at Module.load (internal/modules/cjs/loader.js:985:32)\n    at Function.Module._load (internal/modules/cjs/load"
+            "Stderr": "[ERROR]: Collision test 2 failed\n"
           }, 
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /chrisree/MotionPlan_Collision/test_0.js:807\n}s\n ^\n\nReferenceError: s is not defined\n    at Object.<anonymous> (/chrisree/MotionPlan_Collision/test_0.js:807:2)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1157:10)\n    at Module.load (internal/modules/cjs/loader.js:985:32)\n    at Function.Module._load (internal/modules/cjs/load"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /chrisree/MotionPlan_Collision/test_1.js:807\n}s\n ^\n\nReferenceError: s is not defined\n    at Object.<anonymous> (/chrisree/MotionPlan_Collision/test_1.js:807:2)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1157:10)\n    at Module.load (internal/modules/cjs/loader.js:985:32)\n    at Function.Module._load (internal/modules/cjs/load"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 3 test cases passed"
+          "2 out of 3 test cases passed"
         ]
       }, 
       "MotionPlan_2DRRTConnect": {
