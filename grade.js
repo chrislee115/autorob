@@ -1,4 +1,4 @@
-//CI grader generates report at 01-12-2020-13-04-27
+//CI grader generates report at 02-12-2020-01-01-13
 grade = 
 {
   "chrisree": {
@@ -295,15 +295,15 @@ grade =
         "test results": {
           "Test 2": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: pls { location: [ [ 0 ], [ 0.5 ], [ -2 ], [ 1 ] ], radius: 1 } base\npls { location: [ [ 2 ], [ 0.5 ], [ 0 ], [ 1 ] ], radius: 1 } base\npls { location: [ [ -2 ], [ 0.5 ], [ 0 ], [ 1 ] ], radius: 1 } base\npls { location: [ [ 0 ], [ 0.5 ], [ -2 ], [ 1 ] ], radius: 1 } clavicle_right\npls { location: [ [ 2 ], [ 0.5 ], [ 0 ], [ 1 ] ], radius: 1 } clavicle_right\npls { location: [ [ -2 ], [ 0.5 ], [ 0 ], [ 1 ] ], radius: 1 } clavicle_right\npls { location: [ [ 0 ], [ 0.5 ], [ -2 ], [ 1 ] ], radius: 1 } c"
+            "Stderr": "Error message too long, print partially: /chrisree/MotionPlan_Collision/test_2.js:807\n}s\n ^\n\nReferenceError: s is not defined\n    at Object.<anonymous> (/chrisree/MotionPlan_Collision/test_2.js:807:2)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1157:10)\n    at Module.load (internal/modules/cjs/loader.js:985:32)\n    at Function.Module._load (internal/modules/cjs/load"
           }, 
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: pls { location: [ [ 0 ], [ 0.5 ], [ -2 ], [ 1 ] ], radius: 1 } base\npls { location: [ [ 2 ], [ 0.5 ], [ 0 ], [ 1 ] ], radius: 1 } base\npls { location: [ [ -2 ], [ 0.5 ], [ 0 ], [ 1 ] ], radius: 1 } base\npls { location: [ [ 0 ], [ 0.5 ], [ -2 ], [ 1 ] ], radius: 1 } clavicle_right\npls { location: [ [ 2 ], [ 0.5 ], [ 0 ], [ 1 ] ], radius: 1 } clavicle_right\npls { location: [ [ -2 ], [ 0.5 ], [ 0 ], [ 1 ] ], radius: 1 } clavicle_right\npls { location: [ [ 0 ], [ 0.5 ], [ -2 ], [ 1 ] ], radius: 1 } c"
+            "Stderr": "Error message too long, print partially: /chrisree/MotionPlan_Collision/test_0.js:807\n}s\n ^\n\nReferenceError: s is not defined\n    at Object.<anonymous> (/chrisree/MotionPlan_Collision/test_0.js:807:2)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1157:10)\n    at Module.load (internal/modules/cjs/loader.js:985:32)\n    at Function.Module._load (internal/modules/cjs/load"
           }, 
           "Test 1": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: pls { location: [ [ 0 ], [ 0.5 ], [ -2 ], [ 1 ] ], radius: 1 } base\npls { location: [ [ 2 ], [ 0.5 ], [ 0 ], [ 1 ] ], radius: 1 } base\npls { location: [ [ -2 ], [ 0.5 ], [ 0 ], [ 1 ] ], radius: 1 } base\npls { location: [ [ 0 ], [ 0.5 ], [ -2 ], [ 1 ] ], radius: 1 } clavicle_right\npls { location: [ [ 2 ], [ 0.5 ], [ 0 ], [ 1 ] ], radius: 1 } clavicle_right\npls { location: [ [ -2 ], [ 0.5 ], [ 0 ], [ 1 ] ], radius: 1 } clavicle_right\npls { location: [ [ 0 ], [ 0.5 ], [ -2 ], [ 1 ] ], radius: 1 } c"
+            "Stderr": "Error message too long, print partially: /chrisree/MotionPlan_Collision/test_1.js:807\n}s\n ^\n\nReferenceError: s is not defined\n    at Object.<anonymous> (/chrisree/MotionPlan_Collision/test_1.js:807:2)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1157:10)\n    at Module.load (internal/modules/cjs/loader.js:985:32)\n    at Function.Module._load (internal/modules/cjs/load"
           }
         }, 
         "comments": [
