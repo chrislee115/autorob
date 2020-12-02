@@ -101,7 +101,7 @@ function robot_collision_forward_kinematics(q) {
             return local_collision;
     }
     return false;
-}s
+}
 function traverse_collision_forward_kinematics_joint(joint, mstack, q) {
     if (joint.child != undefined) {
         var tempRPY = joint.origin.rpy;
