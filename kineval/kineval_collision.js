@@ -79,7 +79,6 @@ kineval.poseIsCollision = function robot_collision_test(q) {
     //     });
     // });
     var what = robot_collision_forward_kinematics(q);
-    console.log("what", what);
     return what;
     /* 
     For each link in robot
