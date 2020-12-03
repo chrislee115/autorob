@@ -1,4 +1,4 @@
-//CI grader generates report at 02-12-2020-13-00-02
+//CI grader generates report at 02-12-2020-18-59-35
 grade = 
 {
   "chrisree": {
@@ -291,11 +291,11 @@ grade =
         ]
       }, 
       "MotionPlan_Collision": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 2": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Collision test 2 failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 0": {
             "Status": "Succeed", 
@@ -307,15 +307,15 @@ grade =
           }
         }, 
         "comments": [
-          "2 out of 3 test cases passed"
+          "3 out of 3 test cases passed"
         ]
       }, 
       "MotionPlan_2DRRTConnect": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 2": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Wrong result\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 3": {
             "Status": "Succeed", 
@@ -331,7 +331,7 @@ grade =
           }
         }, 
         "comments": [
-          "3 out of 4 test cases passed"
+          "4 out of 4 test cases passed"
         ]
       }, 
       "MotionPlan_CSpaceRRTConnect": {
