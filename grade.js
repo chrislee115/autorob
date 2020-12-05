@@ -1,4 +1,4 @@
-//CI grader generates report at 05-12-2020-01-10-34
+//CI grader generates report at 05-12-2020-07-09-49
 grade = 
 {
   "chrisree": {
@@ -341,9 +341,9 @@ grade =
         ]
       }, 
       "Pitch": {
-        "status": "PENDING", 
+        "status": "CHECK", 
         "comments": [
-          ""
+          "Point: 12/12, gift points"
         ]
       }
     }, 
@@ -361,7 +361,7 @@ grade =
         "status": 3.5
       }, 
       {
-        "status": "PENDING"
+        "status": 4.0
       }
     ], 
     "participation": {
