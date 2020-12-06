@@ -1,4 +1,4 @@
-//CI grader generates report at 06-12-2020-01-06-11
+//CI grader generates report at 06-12-2020-07-01-12
 grade = 
 {
   "chrisree": {
@@ -311,11 +311,11 @@ grade =
         ]
       }, 
       "MotionPlan_2DRRTConnect": {
-        "status": "PASS", 
+        "status": "PENDING", 
         "test results": {
           "Test 2": {
-            "Status": "Succeed", 
-            "Stderr": ""
+            "Status": "Failed", 
+            "Stderr": "[ERROR]: Incorrect search_result status\n"
           }, 
           "Test 3": {
             "Status": "Succeed", 
@@ -331,7 +331,7 @@ grade =
           }
         }, 
         "comments": [
-          "4 out of 4 test cases passed"
+          "3 out of 4 test cases passed"
         ]
       }, 
       "MotionPlan_CSpaceRRTConnect": {
