@@ -205,7 +205,7 @@ function iterateRRTConnect() {
     //   drawHighlightedPath - renders a highlighted path in a tree
 
     // // search_max_iterations == K?
-    if (search_iter_count > search_max_iterations) {
+    if (search_iter_count >= search_max_iterations) {
         search_iterate = false;
         return "failed";
     }
