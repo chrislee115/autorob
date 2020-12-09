@@ -1,4 +1,4 @@
-//CI grader generates report at 08-12-2020-18-35-18
+//CI grader generates report at 09-12-2020-00-32-08
 grade = 
 {
   "chrisree": {
@@ -314,8 +314,8 @@ grade =
         "status": "PASS", 
         "test results": {
           "Test 2": {
-            "Status": "Succeed", 
-            "Stderr": ""
+            "Status": "Failed", 
+            "Stderr": "[ERROR]: Incorrect search_result status\n"
           }, 
           "Test 3": {
             "Status": "Succeed", 
@@ -331,7 +331,7 @@ grade =
           }
         }, 
         "comments": [
-          "4 out of 4 test cases passed"
+          "[WARNING: ]3 out of 4 test cases passed, your recent changes broke this assisgnment"
         ]
       }, 
       "MotionPlan_CSpaceRRTConnect": {
